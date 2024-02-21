@@ -15,7 +15,10 @@ const DashboardReport = () => {
                 <p className='text-2xl'>10</p>
             </div>
             <div className='text-center rounded-xl bg-green-100 p-3 w-56'>
-                <p className='font-semibold'>Komunitas yang diikuti</p>
+                <p className='font-semibold'>Ini apa ya</p>
+            </div>
+            <div className='text-center rounded-xl bg-purple-100 p-3 w-56'>
+                <p className='font-semibold'>Biar banyak</p>
             </div>
         </div>
     </div>
