@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import cover1 from '../../data/cover2.png'
 import avatar from '../../data/avatar.jpg';
 
@@ -21,6 +22,8 @@ const ProfileHeader = () => {
                 <p>@username</p>
                 <span>•</span>
                 <p>Tanggal gabung</p>
+                <span>•</span>
+                <p>Tanggal Lahir</p>
             </div>
         </div>
         <div className='flex gap-6 justify-center mt-6 mb-6'> 
@@ -32,7 +35,7 @@ const ProfileHeader = () => {
                 <p className='font-bold text-sm'>125</p>
                 <p className='text-slate-500 text-xs font-semibold'>Following</p>
             </div>
-            <button className='bg-white hover:bg-slate-200 text-black border-2 border-slate-500 font-bold py-1 px-4 rounded-lg'>Edit Profile</button>
+            <Link to="/profile/edit" className='bg-white hover:bg-slate-200 text-black border-2 border-slate-500 font-bold py-1 px-4 rounded-lg'>Edit Profile</Link>
         </div>
         <hr />
     </div>

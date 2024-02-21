@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
 import { BsChatLeft } from 'react-icons/bs';
@@ -76,7 +77,8 @@ const Navbar = () => {
                 </Space>
               </a>
             </Dropdown>
-            <div
+            <Link
+              to="/profile"
               className="flex items-center gap-7 cursor-pointer p-1 px-5 hover:bg-light-gray rounded-lg"
               // onClick={() => handleClick('userProfile')}
             >
@@ -98,7 +100,7 @@ const Navbar = () => {
                 </div>
                 <Progress percent={30} strokeColor={"#FFFF00"} showInfo={false} size="small" />
               </div>
-            </div>
+            </Link>
           </div>
         {/* </TooltipComponent> */}
 
