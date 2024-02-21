@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { BrowserRouter, Routes, Route } from  "react-router-dom";
 import { FiSettings }  from 'react-icons/fi';
 import {Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile} from './components';
-import {Profile, Home} from './pages';
+import {Profile, ProfileEdit, Home} from './pages';
 
 import { useStateContext } from './contexts/ContextProvider';
 
@@ -38,6 +38,7 @@ const App = () => {
                             <Routes>
                                 <Route path='/' element={<Home/>}/>
                                 <Route path='/profile' element={<Profile />} />
+                                <Route path='/profile/edit' element={<ProfileEdit/>} />
                                 <Route path='/tanyajawab' element="Tanya Jawab"/>
                                 <Route path='/cariteman' element="Cari Teman"/>
                                 <Route path='/quiz' element="Quiz"/>
