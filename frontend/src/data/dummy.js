@@ -7,9 +7,9 @@ import { IoMdContacts } from 'react-icons/io';
 import { RiContactsLine, RiStockLine } from 'react-icons/ri';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { HiOutlineRefresh } from 'react-icons/hi';
+import { HiChatBubbleLeftRight } from "react-icons/hi2";
 import { TiTick } from 'react-icons/ti';
-import { GiLouvrePyramid } from 'react-icons/gi';
-import { GrLocation } from 'react-icons/gr';
+import { GrLocation, GrTask } from 'react-icons/gr';
 import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
 import avatar3 from './avatar3.png';
@@ -484,16 +484,16 @@ export const links = [
     title: 'Pages',
     links: [
       {
-        name: 'orders',
-        icon: <AiOutlineShoppingCart />,
+        name: 'Cari Teman',
+        icon: <HiChatBubbleLeftRight />,
       },
       {
-        name: 'employees',
+        name: 'Tanya Jawab',
         icon: <IoMdContacts />,
       },
       {
-        name: 'customers',
-        icon: <RiContactsLine />,
+        name: 'Quiz',
+        icon: <GrTask />,
       },
     ],
   },

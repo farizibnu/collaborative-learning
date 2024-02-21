@@ -4,8 +4,8 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { BsChatLeft } from 'react-icons/bs';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import { SearchOutlined } from '@ant-design/icons';
-import { Input, Progress } from 'antd';
+import { SearchOutlined, BellOutlined } from '@ant-design/icons';
+import { Input, Progress, Dropdown, Space } from 'antd';
 
 // import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
@@ -30,13 +30,31 @@ import { useStateContext } from '../contexts/ContextProvider';
 //   {/* </TooltipComponent> */}
 // );
 
+const items = [
+  {
+    label: <a href="https://www.antgroup.com">1st menu item</a>,
+    key: '0',
+  },
+  {
+    label: <a href="https://www.aliyun.com">2nd menu item</a>,
+    key: '1',
+  },
+  {
+    type: 'divider',
+  },
+  {
+    label: '3rd menu item',
+    key: '3',
+  },
+];
+
 const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center p-2 md:ml-6 md:mr-6 relative">
         <div>
-          <p>Welcome, nama</p>
-          <p>Have a good day!</p>
+          {/* <p>Welcome, nama</p>
+          <p>Have a good day!</p> */}
         </div>
       {/* <NavButton title="Menu" icon={<AiOutlineMenu />} /> */}
       <div className="flex rounded-xl h-9">
@@ -50,27 +68,36 @@ const Navbar = () => {
         {/* <NavButton title="Chat" dotColor="#03C9D7" icon={<BsChatLeft />} />
         <NavButton title="Notification" dotColor="rgb(254, 201, 15)" icon={<RiNotification3Line />} /> */}
         {/* <TooltipComponent content="Profile" position="BottomCenter"> */}
-          <div
-            className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            // onClick={() => handleClick('userProfile')}
-          >
-            <img
-              className="rounded-full w-8 h-8"
-              src={avatar}
-              alt="user-profile"
-            />
-            <div>
-              <p>
-                <span className="text-gray-400 text-14">Hi,</span>{' '}
-                <span className="text-gray-400 font-bold ml-1 text-14">
-                  Michael
-                </span>
-              </p>
-              <div className='flex'>
-                {/* <MdKeyboardArrowDown className="text-gray-400 text-14 items-center" /> */}
-                <p>Level 0</p>
+          <div className='flex gap-2 items-center justify-center'>
+            <Dropdown  menu={{ items }} trigger={['click']}>
+              <a onClick={(e) => e.preventDefault()}>
+                <Space>
+                  <BellOutlined style={{ fontSize: '22px', color: '#374151' }} />
+                </Space>
+              </a>
+            </Dropdown>
+            <div
+              className="flex items-center gap-7 cursor-pointer p-1 px-5 hover:bg-light-gray rounded-lg"
+              // onClick={() => handleClick('userProfile')}
+            >
+              <img
+                className="rounded-full w-8 h-8"
+                src={avatar}
+                alt="user-profile"
+              />
+              <div>
+                <p>
+                  <span className="text-gray-400 text-14">Hi,</span>{' '}
+                  <span className="text-gray-400 font-bold ml-1 text-14">
+                    Michael
+                  </span>
+                </p>
+                <div className='flex'>
+                  {/* <MdKeyboardArrowDown className="text-gray-400 text-14 items-center" /> */}
+                  <p>Level 0</p>
+                </div>
+                <Progress percent={30} strokeColor={"#FFFF00"} showInfo={false} size="small" />
               </div>
-              <Progress percent={30} strokeColor={"#FFFF00"} showInfo={false} size="small" />
             </div>
           </div>
         {/* </TooltipComponent> */}
