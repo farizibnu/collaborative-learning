@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaPeopleGroup } from "react-icons/fa6";
-import { MdQuiz } from "react-icons/md";
+import { MdOutlineAssignmentTurnedIn } from "react-icons/md";
 
 import badge1 from '../../data/badge-1.svg'
 import badge2 from '../../data/badge-2.svg'
@@ -30,7 +30,7 @@ const ProfileDetail = () => {
             </div>
             <div className='flex text-center rounded-xl bg-blue-100 p-3 w-full h-16 justify-between'>
                 <div className='flex text-blue-500 items-center justify-center gap-2'>
-                    <MdQuiz style={{ fontSize: '24px'}} />
+                    <MdOutlineAssignmentTurnedIn style={{ fontSize: '24px'}} />
                     <p className='font-bold text-lg'>10</p>
                 </div>
                 <p className='font-bold items-center justify-center flex text-slate-500'>Quiz Selesai</p>
