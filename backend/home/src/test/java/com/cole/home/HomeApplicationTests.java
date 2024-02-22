@@ -1,4 +1,4 @@
-package com.dashboard.home;
+package com.cole.home;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
