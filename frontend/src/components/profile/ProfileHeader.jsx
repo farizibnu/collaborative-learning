@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { Flex, Progress } from 'antd';
 import cover1 from '../../data/cover2.png'
 import avatar from '../../data/avatar.jpg';
 
@@ -11,6 +12,9 @@ const ProfileHeader = () => {
             <div className='relative flex w-full justify-center'>
                 <img className='h-32 w-full object-none' src={cover1} alt="cover" />
                 <div className='absolute -bottom-10'>
+                    <Flex className='absolute' gap="small" wrap="wrap">
+                        <Progress type="circle" percent={30} size={100} format={() => ''}/>
+                    </Flex>
                     <img className='h-24 rounded-full' src={avatar} alt="Avatar" />
                 </div>
             </div>

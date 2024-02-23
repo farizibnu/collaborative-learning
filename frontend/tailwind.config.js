@@ -3,8 +3,8 @@ module.exports = {
   darkMode: 'class',
   theme: {
     fontFamily: {
-      display: ['Open Sans', 'sans-serif'],
-      body: ['Open Sans', 'sans-serif'],
+      display: ['Wix Madefor Display', 'sans-serif'],
+      body: ['Wix Madefor'],
     },
     extend: {
       fontSize: {
