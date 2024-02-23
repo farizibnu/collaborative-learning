@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaPeopleGroup } from "react-icons/fa6";
+import { FaPeopleGroup, FaArrowRightLong  } from "react-icons/fa6";
 import { MdOutlineAssignmentTurnedIn } from "react-icons/md";
 
 const DashboardReport = () => {
@@ -8,16 +8,23 @@ const DashboardReport = () => {
     <div className="card w-full mx-20">
         <p className='text-2xl font-bold mb-6'>Report</p>
         <div className='flex justify-between'>
-            <div className='flex text-left rounded-2xl bg-orange-100 border-3 border-orange-300 text-orange-500 p-3 w-56'>
-                <div className='bg-white rounded-xl w-12 h-12 items-center flex justify-center'>
-                    <FaPeopleGroup style={{ fontSize: '24px'}} />
+            <div className='text-left rounded-2xl bg-orange-100 border-3 border-orange-300 text-orange-500 p-3 w-64'>
+                <div className='flex'>
+                    <div className='bg-white rounded-xl w-12 h-12 items-center flex justify-center'>
+                        <FaPeopleGroup style={{ fontSize: '24px'}} />
+                    </div>
+                    <div className='mx-2'>
+                        <p className='text-2xl text-black font-bold'>8</p>
+                        <p className='font-bold text-xs text-slate-400'>Komunitas yang diikuti</p>
+                    </div>
                 </div>
-                <div className='mx-2'>
-                    <p className='text-2xl text-black font-bold'>8</p>
-                    <p className='font-bold text-xs text-slate-400'>Komunitas yang diikuti</p>
+                <hr className='my-2 mx-0 border-slate-400'/>
+                <div className='mx-2 flex justify-between'>
+                    <p className='font-bold text-xs text-orange-500'>Lihat Detail</p>
+                    <FaArrowRightLong />
                 </div>
             </div>
-            <div className='flex text-left rounded-2xl bg-blue-100 border-3 border-blue-300 text-blue-500 p-3 w-56'>
+            <div className='flex text-left rounded-2xl bg-blue-100 border-3 border-blue-300 text-blue-500 p-3 w-64'>
                 <div className='bg-white rounded-xl w-12 h-12 items-center flex justify-center'>
                     <MdOutlineAssignmentTurnedIn style={{ fontSize: '24px'}} />
                 </div>
@@ -26,10 +33,10 @@ const DashboardReport = () => {
                     <p className='font-bold text-xs text-slate-400'>Quiz Selesai</p>
                 </div>
             </div>
-            <div className='text-center rounded-2xl bg-green-100 border-3 border-green-300 p-3 w-56'>
+            <div className='text-center rounded-2xl bg-green-100 border-3 border-green-300 p-3 w-64'>
                 <p className='font-semibold'>Ini apa ya</p>
             </div>
-            <div className='text-center rounded-2xl bg-purple-100 border-3 border-purple-300 p-3 w-56'>
+            <div className='text-center rounded-2xl bg-purple-100 border-3 border-purple-300 p-3 w-64'>
                 <p className='font-semibold'>Biar banyak</p>
             </div>
         </div>

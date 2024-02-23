@@ -12,7 +12,7 @@ import badge9 from '../../data/achievement9.png'
 const AchievementList = () => {
   return (
     <div className='grid grid-cols-3 gap-x-16 gap-y-8 text-center'>
-        <div className='rounded-2xl bg-gradient-to-r from-cyan-300 to-blue-300'>
+        <div className='rounded-2xl bg-gradient-to-r from-cyan-300 to-blue-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'>
             <div className='h-32 m-4 flex justify-center'>
                 <img className='' src={badge1} alt="badge-1" />
             </div>
@@ -22,7 +22,7 @@ const AchievementList = () => {
                 <p className='font-semibold text-sm my-4'>Detail Achievement Detail Achievement Detail Achievement Detail Achievement Detail Achievement</p>
             </div>
         </div>
-        <div className='rounded-2xl bg-gradient-to-r from-cyan-300 to-blue-300'>
+        <div className='rounded-2xl bg-gradient-to-r from-cyan-300 to-blue-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'>
             <div className='h-32 m-4 flex justify-center'>
                 <img className='' src={badge2} alt="badge-2" />
             </div>
@@ -32,7 +32,7 @@ const AchievementList = () => {
                 <p className='font-semibold text-sm my-4'>Detail Achievement Detail Achievement Detail Achievement Detail Achievement Detail Achievement</p>
             </div>
         </div>
-        <div className='rounded-2xl bg-stone-200'>
+        <div className='rounded-2xl bg-stone-200 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'>
             <div className='h-32 m-4 flex justify-center'>
                 <img className='grayscale' src={badge3} alt="badge-3" />
             </div>
@@ -42,7 +42,7 @@ const AchievementList = () => {
                 <p className='font-semibold text-sm my-4'>Detail Achievement Detail Achievement Detail Achievement Detail Achievement Detail Achievement</p>
             </div>
         </div>
-        <div className='rounded-2xl bg-stone-200'>
+        <div className='rounded-2xl bg-stone-200 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'>
             <div className='h-32 m-4 flex justify-center'>
                 <img className='grayscale' src={badge4} alt="badge-4" />
             </div>
@@ -52,7 +52,7 @@ const AchievementList = () => {
                 <p className='font-semibold text-sm my-4'>Detail Achievement Detail Achievement Detail Achievement Detail Achievement Detail Achievement</p>
             </div>
         </div>
-        <div className='rounded-2xl bg-stone-200'>
+        <div className='rounded-2xl bg-stone-200 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'>
             <div className='h-32 m-4 flex justify-center'>
                 <img className='grayscale' src={badge5} alt="badge-5" />
             </div>
@@ -62,7 +62,7 @@ const AchievementList = () => {
                 <p className='font-semibold text-sm my-4'>Detail Achievement Detail Achievement Detail Achievement Detail Achievement Detail Achievement</p>
             </div>
         </div>
-        <div className='rounded-2xl bg-stone-200'>
+        <div className='rounded-2xl bg-stone-200 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'>
             <div className='h-32 m-4 flex justify-center'>
                 <img className='grayscale' src={badge6} alt="badge-6" />
             </div>
@@ -72,7 +72,7 @@ const AchievementList = () => {
                 <p className='font-semibold text-sm my-4'>Detail Achievement Detail Achievement Detail Achievement Detail Achievement Detail Achievement</p>
             </div>
         </div>
-        <div className='rounded-2xl bg-stone-200'>
+        <div className='rounded-2xl bg-stone-200 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'>
             <div className='h-32 m-4 flex justify-center'>
                 <img className='grayscale' src={badge7} alt="badge-7" />
             </div>
@@ -82,7 +82,7 @@ const AchievementList = () => {
                 <p className='font-semibold text-sm my-4'>Detail Achievement Detail Achievement Detail Achievement Detail Achievement Detail Achievement</p>
             </div>
         </div>
-        <div className='rounded-2xl bg-stone-200'>
+        <div className='rounded-2xl bg-stone-200 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'>
             <div className='h-32 m-4 flex justify-center'>
                 <img className='grayscale' src={badge8} alt="badge-8" />
             </div>
@@ -92,7 +92,7 @@ const AchievementList = () => {
                 <p className='font-semibold text-sm my-4'>Detail Achievement Detail Achievement Detail Achievement Detail Achievement Detail Achievement</p>
             </div>
         </div>
-        <div className='rounded-2xl bg-stone-200'>
+        <div className='rounded-2xl bg-stone-200 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'>
             <div className='h-32 m-4 flex justify-center'>
                 <img className='grayscale' src={badge9} alt="badge-9" />
             </div>
