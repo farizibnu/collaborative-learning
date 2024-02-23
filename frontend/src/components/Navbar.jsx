@@ -59,7 +59,7 @@ const Navbar = () => {
         </div>
       {/* <NavButton title="Menu" icon={<AiOutlineMenu />} /> */}
       <div className="flex rounded-xl h-9">
-        <Input className='rounded-full gap-3' size="small" placeholder="Search"  prefix={<SearchOutlined />} />
+        {/* <Input className='rounded-full gap-3' size="small" placeholder="Search"  prefix={<SearchOutlined />} /> */}
         {/* <div className='m-4 rounded-md bg-white '>
           <form action="/search" method="get" className='border-red-700 m-2'>
                 <input type="text" name="q" placeholder="Search" />
