@@ -5,7 +5,7 @@ const DashboardQuizStat = () => {
   return (
     <div className='w-full'>
         <p className='text-xl font-bold mb-4'>Quiz Statistic</p>
-        <div className='border-2 border-slate-200 flex p-4 rounded-3xl'>
+        <div className='border-3 border-slate-200 flex p-4 rounded-3xl'>
             <DashboardChartQuiz/>
             <div className='ml-8'>
                 <div className='mt-6 '>
