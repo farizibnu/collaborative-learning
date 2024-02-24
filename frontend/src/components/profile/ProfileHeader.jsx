@@ -12,8 +12,8 @@ const ProfileHeader = () => {
             <div className='relative flex w-full justify-center'>
                 <img className='h-32 w-full object-none' src={cover1} alt="cover" />
                 <div className='absolute -bottom-10'>
-                    <Flex className='absolute' gap="small" wrap="wrap">
-                        <Progress type="circle" percent={30} size={100} format={() => ''}/>
+                    <Flex className='absolute -right-1.5 -bottom-1.5' gap="small" wrap="wrap">
+                        <Progress strokeColor={"#fb923c"} type="circle" percent={40} size={109} format={() => ''}/>
                     </Flex>
                     <img className='h-24 rounded-full' src={avatar} alt="Avatar" />
                 </div>

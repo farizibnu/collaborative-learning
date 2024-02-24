@@ -1,47 +1,47 @@
 import React from 'react'
-import avatar2 from '../../data/avatar2.jpg'
-import avatar3 from '../../data/avatar3.png'
-import avatar4 from '../../data/avatar4.jpg'
+import course1 from '../../data/product1.jpg'
+import course2 from '../../data/product2.jpg'
+import course3 from '../../data/product3.jpg'
 
 
 const DashboardReport = () => {
   return (
   <>
-    <div className="card w-full mx-20">
-        <p className='text-2xl font-bold mb-6'>Upcoming Event</p>
-        <div className='flex gap-4'>
-            <div className='rounded-lg bg-white border-t-blue-600 border-t-8 shadow-md p-3 h-48 w-72 relative'>
-                <p className='text-red-600 text-sm'>Tanggal Deadline</p>
-                <div className='absolute bottom-2 leading-10'>
-                    <p className='font-bold text-xl'>Nama Mata Kuliah</p>
-                    <p className=''>Nama Tugas</p>
-                    <div className='flex gap-2 items-center'>
-                        <img className="rounded-full w-8 h-8" src={avatar2} alt="" />
-                        <p>Nama Dosen</p>
+    <div className="shadow-md rounded-xl bg-white p-4 mr-4">
+        <p className='text-xl font-bold mb-4'>Upcoming Event</p>
+        <div className=''>
+            <div className='flex rounded-lg bg-white shadow-md p-3 h-20 w-full mb-2 relative items-center'>
+                <img className='m-0 p-0 w-16 h-16 object-cover rounded-lg' src={course1} alt="" />
+                <div className='ml-2'>
+                    <p className='text-red-600 font-semibold text-xs'>Hari Ini <span>- 23:59</span> </p>
+                    <div className=''>
+                        <p className='font-bold text-sm'>Pengujian Perangkat Lunak</p>
+                        <p className='text-sm text-slate-500 font-semibold'>Blackbox Testing</p>
                     </div>
                 </div>
             </div>
-            <div className='rounded-lg bg-white border-t-blue-600 border-t-8 shadow-md p-3 h-48 w-72 relative'>
-                <p className='text-red-600 text-sm'>Tanggal Deadline</p>
-                <div className='absolute bottom-2 leading-10'>
-                    <p className='font-bold text-xl'>Nama Mata Kuliah</p>
-                    <p className=''>Nama Tugas</p>
-                    <div className='flex gap-2 items-center'>
-                    <img className="rounded-full w-8 h-8" src={avatar3} alt="" />
-                        <p>Nama Dosen</p>
+            <div className='flex rounded-lg bg-white shadow-md p-3 h-20 w-full mb-2 relative items-center'>
+                <img className='m-0 p-0 w-16 h-16 object-cover rounded-lg' src={course2} alt="" />
+                <div className='ml-2'>
+                    <p className='text-red-600 font-semibold text-xs'>Tanggal Deadline <span>- Jam Deadline</span> </p>
+                    <div className=''>
+                        <p className='font-bold text-sm'>Nama Course</p>
+                        <p className='text-sm text-slate-500 font-semibold'>Nama Course</p>
                     </div>
                 </div>
             </div>
-            <div className='rounded-lg bg-white border-t-blue-600 border-t-8 shadow-md p-3 h-48 w-72 relative'>
-                <p className='text-red-600 text-sm'>Tanggal Deadline</p>
-                <div className='absolute bottom-2 leading-10'>
-                    <p className='font-bold text-xl'>Nama Mata Kuliah</p>
-                    <p className=''>Nama Tugas</p>
-                    <div className='flex gap-2 items-center'>
-                    <img className="rounded-full w-8 h-8" src={avatar4} alt="" />
-                        <p>Nama Dosen</p>
+            <div className='flex rounded-lg bg-white shadow-md p-3 h-20 w-full mb-2 relative items-center'>
+                <img className='m-0 p-0 w-16 h-16 object-cover rounded-lg' src={course3} alt="" />
+                <div className='ml-2'>
+                    <p className='text-red-600 font-semibold text-xs'>Tanggal Deadline <span>- Jam Deadline</span> </p>
+                    <div className=''>
+                        <p className='font-bold text-sm'>Nama Course</p>
+                        <p className='text-sm text-slate-500 font-semibold'>Nama Course</p>
                     </div>
                 </div>
+            </div>
+            <div className='flex items-center justify-center mt-4'>
+                <button className='bg-orange-400 hover:bg-orange-600 p-3 text-white rounded-3xl font-bold text-sm px-10'>Lihat Selengkapnya</button>
             </div>
         </div>
     </div>
