@@ -108,7 +108,7 @@ const Navbar = () => {
                 </KnockFeedProvider> */}
             <Link
               to="/profile"
-              className="flex items-center gap-7 cursor-pointer p-1 px-5 hover:bg-light-gray rounded-lg"
+              className="flex items-center gap-2 cursor-pointer p-1 px-3 hover:bg-light-gray rounded-lg"
               // onClick={() => handleClick('userProfile')}
             >
               <img
@@ -116,18 +116,18 @@ const Navbar = () => {
                 src={avatar}
                 alt="user-profile"
               />
-              <div>
+              <div className='w-40'>
                 <p>
                   <span className="text-gray-400 text-14">Hi,</span>{' '}
                   <span className="text-gray-400 font-bold ml-1 text-14">
                     Michael
                   </span>
                 </p>
-                <div className='flex'>
+                <div className='flex w-full'>
                   {/* <MdKeyboardArrowDown className="text-gray-400 text-14 items-center" /> */}
-                  <p>Level 0</p>
+                  <p className='w-1/2 font-semibold'>Level 1</p>
+                  <Progress className='w-1/2' percent={30} strokeColor={"#fb923c"} showInfo={false} size="small" strokeWidth={7} />
                 </div>
-                <Progress percent={30} strokeColor={"#FFFF00"} showInfo={false} size="small" />
               </div>
             </Link>
           </div>

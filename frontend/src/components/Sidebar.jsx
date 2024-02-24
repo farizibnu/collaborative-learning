@@ -9,15 +9,15 @@ import {links} from  '../data/dummy';
 
 const Sidebar = () => {
   const activeMenu = true;
-  const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-gray-700 text-md m-2 bg-light-gray'
-  const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-gray-700 text-md hover:bg-light-gray m-2'
+  const activeLink = 'flex items-center gap-5 pl-8 -ml-3 pt-3 pb-2.5 text-orange-400 border-l-4 border-l-orange-400 font-semibold text-md m-2'
+  const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white font-semibold text-md hover:text-orange-300 m-2'
 
   return (
-    <div className='ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10'>
+    <div className='pl-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 bg-slate-950'>
       {activeMenu && (<>
         <div className='flex justify-between items-center pb-5'>
-          <Link to="/" onClick={() => {}} className='items-center ml-3 flex text-xl tracking-tight gap-3 mt-4 font-extrabold text-slate-900'>
-          <AiOutlineSlackSquare /><span>Colle</span>
+          <Link to="/" onClick={() => {}} className='items-center ml-3 flex text-xl tracking-tight gap-3 mt-4 font-extrabold text-orange-400'>
+          <AiOutlineSlackSquare /><span className='text-white'>Cole</span>
           </Link>
           <button type='button' onClick={() => {}} className='text-2xl p-1 mx-2 hover:bg-light-gray mt-4 block md:hidden'>
             <AiOutlineLeftSquare/>
