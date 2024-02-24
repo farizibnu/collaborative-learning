@@ -9,7 +9,7 @@ const DashboardCourseList = () => {
   return (
     <div className="card w-full">
         <div className='flex justify-between'>
-            <p className='text-2xl font-bold mb-6'>Course List</p>
+            <p className='text-xl font-bold mb-6'>Course List</p>
             <p className='text-orange-400 font-bold'>Lihat Selengkapnya</p>
         </div>
         <div className='flex gap-4'>

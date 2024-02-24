@@ -24,7 +24,7 @@ const DashboardFriendRecommend = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <p className='text-2xl font-bold mb-6'>Friend Recommendation</p>
+      <p className='text-xl font-bold mb-6'>Friend Recommendation</p>
       <div className="flex relative">
         {visibleFriendsData.map((friend) => (
           <FriendRecommendation key={friend.id} friend={friend} />

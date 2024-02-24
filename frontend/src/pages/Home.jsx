@@ -4,6 +4,7 @@ import DashboardDeadline from '../components/dashboard/DashboardDeadline'
 import DashboardFriendRecommend from '../components/dashboard/DashboardFriendRecommend'
 import DashboardCourseList from  '../components/dashboard/DashboardCourseList'
 import DashboardCommunityList from '../components/dashboard/DashboardCommunityList'
+import DashboardQuizStat from '../components/dashboard/DashboardQuizStat'
 
 const Home = () => {
   return (
@@ -11,6 +12,9 @@ const Home = () => {
       <div className='col-span-2 ml-16'>
         <div className="flex flex-wrap lg:flex-nowrap justify-center mb-8">
           <DashboardReport/>
+        </div>
+        <div className="flex flex-wrap lg:flex-nowrap justify-center my-8">
+          <DashboardQuizStat/>
         </div>
         <div className="flex flex-wrap lg:flex-nowrap justify-center my-8">
           <DashboardCourseList/>

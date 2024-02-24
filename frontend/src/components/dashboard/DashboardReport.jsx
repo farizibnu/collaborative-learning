@@ -6,7 +6,7 @@ const DashboardReport = () => {
   return (
   <>
     <div className="card w-full">
-        <p className='text-2xl font-bold mb-6'>Report</p>
+        <p className='text-xl font-bold mb-6'>Report</p>
         <div className='flex justify-between'>
             <div className='text-left rounded-2xl bg-orange-100 border-3 border-orange-300 text-orange-500 p-3 w-60'>
                 <div className='flex'>
