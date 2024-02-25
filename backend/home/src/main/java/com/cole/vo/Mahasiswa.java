@@ -32,6 +32,25 @@ public class Mahasiswa {
 		this.semester = semester;
 	}
 	
+	public Mahasiswa (
+			 Long id_mhs,
+			 String nama,
+			 String username,
+			 String bio,
+			 String about,
+			 String kampus,
+			 String jurusan,
+			 int semester) {
+				this.id_mhs = id_mhs;
+				this.nama = nama;
+				this.username = username;
+				this.bio = bio;
+				this.about = about;
+				this.kampus = kampus;
+				this.jurusan = jurusan;
+				this.semester = semester;
+			}
+	
 	//Getter and Setter
 	public Long getId_mhs() {
 		return id_mhs;

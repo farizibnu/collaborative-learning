@@ -35,5 +35,15 @@ public class MahasiswaService {
 		return isSuccess;
 	}
 	
+	public boolean updateMahasiswa (Mahasiswa mahasiswa) {
+		Mahasiswa result = mahasiswaRepository.findOne(mahasiswa.getId_mhs());
+		
+		if(result == null)
+			return false;
+				
+		mahasiswaRepository.saveMahasiswa(result);
+		return true;
+	}
+	
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,4 +50,20 @@ public class MahasiswaController {
 			return new Result(500, "Fail");
 		}
 	}
+	
+	@PutMapping("/mahasiswa/{id}")
+	public Object modifyMahasiswa(HttpServletResponse response, @PathVariable Long id, @RequestBody Mahasiswa mahasiswaParam) { 
+	    Mahasiswa mahasiswa = new Mahasiswa(id, mahasiswaParam.getNama(), mahasiswaParam.getUsername(), 
+	            mahasiswaParam.getBio(), mahasiswaParam.getAbout(), mahasiswaParam.getKampus(),
+	            mahasiswaParam.getJurusan(), mahasiswaParam.getSemester());
+	    
+	    boolean isSuccess = mahasiswaService.updateMahasiswa(mahasiswa);
+	    if(isSuccess) {
+	        return new Result(200, "Success");
+	    } else {
+	        response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR); 
+	        return new Result(500, "Fail");
+	    }
+	}
+
 }

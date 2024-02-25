@@ -37,4 +37,6 @@ public class MahasiswaRepository {
 				mahasiswa.getBio(), mahasiswa.getAbout(), mahasiswa.getKampus(),
 				mahasiswa.getJurusan(), mahasiswa.getSemester());
 	}
+	
+	
 }
