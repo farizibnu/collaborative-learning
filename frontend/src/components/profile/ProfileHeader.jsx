@@ -1,10 +1,26 @@
-import React from 'react'
+import React, {useState, useEffect } from "react"
+import axios from "axios";
 import { Link } from 'react-router-dom';
 import { Flex, Progress } from 'antd';
 import cover1 from '../../data/cover2.png'
 import avatar from '../../data/avatar.jpg';
 
 const ProfileHeader = () => {
+    const [mahasiswa, setMahasiswa] = useState("");
+
+    const getInfoMahasiswa = async () => {
+        try {
+        const response = await axios.get(`http://localhost:8080/mahasiswa/1`);
+        setMahasiswa(response.data);
+        } catch (error) {
+        console.error('Error fetching mahasiswa data:', error);
+        }
+    };
+
+    useEffect(()=>{
+        getInfoMahasiswa();
+    }, []);
+
   return (
     <div>
         <div className='flex justify-center'>
@@ -20,10 +36,10 @@ const ProfileHeader = () => {
             </div>
         </div>
         <div className='text-center mt-14'>
-            <p className='font-bold text-xl'>Nama</p>
-            <p>Bio yang panjang biar banyak isinya. Isinya bisa hobi atau apa lah yang penting panjang.</p>
+            <p className='font-bold text-xl'>{mahasiswa.nama}</p>
+            <p>{mahasiswa.bio}</p>
             <div className='justify-center text-slate-500 flex gap-2 text-sm'>
-                <p>@username</p>
+                <p>@{mahasiswa.username}</p>
                 <span>•</span>
                 <p>Tanggal gabung</p>
                 <span>•</span>
