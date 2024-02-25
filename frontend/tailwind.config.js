@@ -3,8 +3,8 @@ module.exports = {
   darkMode: 'class',
   theme: {
     fontFamily: {
-      display: ['Open Sans', 'sans-serif'],
-      body: ['Open Sans', 'sans-serif'],
+      display: ['Wix Madefor Display', 'sans-serif'],
+      body: ['Wix Madefor'],
     },
     extend: {
       fontSize: {
@@ -19,6 +19,7 @@ module.exports = {
       },
       borderWidth: {
         1: '1px',
+        3: '3px',
       },
       borderColor: {
         color: 'rgba(0, 0, 0, 0.1)',

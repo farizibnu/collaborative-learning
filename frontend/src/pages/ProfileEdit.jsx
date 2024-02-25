@@ -35,7 +35,7 @@ const ProfileEdit = () => {
                 <Form.Item className='absolute -bottom-4 right-2 bg-slate-50 hover:bg-slate-200 rounded-full h-8 w-8 items-center flex justify-center border-1 border-slate-300' valuePropName="fileList">
                     <Upload action="/upload.do" >
                         <button type="button">
-                         <FaPencilAlt />
+                            <FaPencilAlt />
                         </button>
                     </Upload>
                 </Form.Item>
@@ -44,7 +44,7 @@ const ProfileEdit = () => {
                     <Form.Item className='absolute -bottom-4 right-1 bg-slate-50 hover:bg-slate-200 rounded-full h-8 w-8 items-center flex justify-center border-1 border-slate-300' valuePropName="fileList">
                         <Upload action="/upload.do">
                             <button type="button">
-                            <FaPencilAlt />
+                                <FaPencilAlt />
                             </button>
                         </Upload>
                     </Form.Item>
