@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import { BrowserRouter, Routes, Route } from  "react-router-dom";
+import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from "@clerk/clerk-react"
 import { FiSettings }  from 'react-icons/fi';
 import {Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile} from './components';
 import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, TEST} from './pages/';
@@ -10,6 +11,8 @@ import './App.css'
 
 const App = () => {
     const activeMenu = true;
+    const { user } = useUser();
+
     return (
         <div>
             <BrowserRouter>
