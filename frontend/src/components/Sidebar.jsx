@@ -2,6 +2,7 @@ import React from 'react'
 import {Link, NavLink} from 'react-router-dom';
 import { AiOutlineSlackSquare, AiOutlineLeftSquare  } from "react-icons/ai";
 import {MdOutlineCancel} from 'react-icons/md';
+import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from "@clerk/clerk-react"
 
 import { useStateContext } from '../contexts/ContextProvider';
 
@@ -14,6 +15,14 @@ const Sidebar = () => {
 
   return (
     <div className='pl-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 bg-slate-950'>
+      <div className='bg-white'>
+      <SignedOut>
+          <SignInButton />
+      </SignedOut>
+      <SignedIn>
+          <UserButton afterSignOutUrl="/" />
+      </SignedIn>
+      </div>
       {activeMenu && (<>
         <div className='flex justify-between items-center pb-5'>
           <Link to="/" onClick={() => {}} className='items-center ml-3 flex text-xl tracking-tight gap-3 mt-4 font-extrabold text-orange-400'>
