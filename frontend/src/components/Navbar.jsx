@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, {useState, useEffect } from "react"
+import axios from "axios";
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
@@ -63,11 +64,26 @@ const Navbar = () => {
   // const [isVisible, setIsVisible] = useState(false);
   // const notifButtonRef = useRef(null);
 
+  const [mahasiswa, setMahasiswa] = useState("");
+
+  const getInfoMahasiswa = async () => {
+      try {
+      const response = await axios.get(`http://localhost:8080/mahasiswa/1`);
+      setMahasiswa(response.data);
+      } catch (error) {
+      console.error('Error fetching mahasiswa data:', error);
+      }
+  };
+
+  useEffect(()=>{
+      getInfoMahasiswa();
+  }, []);
+
   return (
     <div className="flex justify-between items-center p-2 md:ml-6 md:mr-6 relative">
-        <div>
-          {/* <p>Welcome, nama</p>
-          <p>Have a good day!</p> */}
+        <div className='ml-8'>
+          {/* <p className='font-bold'>Monday</p>
+          <p className='text-sm font-semibold'>24 February 2024</p> */}
         </div>
       {/* <NavButton title="Menu" icon={<AiOutlineMenu />} /> */}
       <div className="flex rounded-xl h-9">
@@ -120,7 +136,7 @@ const Navbar = () => {
                 <p>
                   <span className="text-gray-400 text-14">Hi,</span>{' '}
                   <span className="text-gray-400 font-bold ml-1 text-14">
-                    Michael
+                    {mahasiswa.nama}
                   </span>
                 </p>
                 <div className='flex w-full'>
