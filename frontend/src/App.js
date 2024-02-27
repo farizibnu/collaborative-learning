@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from  "react-router-dom";
 import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from "@clerk/clerk-react"
 import { FiSettings }  from 'react-icons/fi';
 import {Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile} from './components';
-import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, TEST} from './pages/';
+import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, TEST, TEST2} from './pages/';
 
 import { useStateContext } from './contexts/ContextProvider';
 
@@ -11,7 +11,7 @@ import './App.css'
 
 const App = () => {
     const activeMenu = true;
-    const { user } = useUser();
+    // const { user } = useUser();
 
     return (
         <div>
@@ -47,6 +47,7 @@ const App = () => {
                                 <Route path='/cari-teman' element={<CariTeman/>}/>
                                 <Route path='/quiz' element={<Quiz/>}/>
                                 <Route path='/test' element={<TEST/>}/>
+                                <Route path='/test2' element={<TEST2/>}/>
                             </Routes>
                         </div>
                     </div>
