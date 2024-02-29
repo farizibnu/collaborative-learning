@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import AchievementList from '../components/achievement/AchievementList';
+import AchievementListPolygon from '../components/achievement/AchievementListPolygon';
 
 const Achievement = () => {
   // State to manage the search query
@@ -23,7 +24,8 @@ const Achievement = () => {
       </div>
       <div className='my-8'>
         {/* Pass search query state to AchievementList */}
-        <AchievementList searchQuery={searchQuery} />
+        {/* <AchievementList /> */}
+        <AchievementListPolygon searchQuery={searchQuery} />
       </div>
     </div>
   );
