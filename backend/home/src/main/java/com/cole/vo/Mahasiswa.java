@@ -4,6 +4,8 @@ public class Mahasiswa {
 	private Long id_mhs;
 	private String nama;
 	private String username;
+	private String email;
+	private String password;
 	private String bio;
 	private String about;
 	private String kampus;
@@ -18,6 +20,8 @@ public class Mahasiswa {
 	public Mahasiswa (
 	 String nama,
 	 String username,
+	 String email,
+	 String password,
 	 String bio,
 	 String about,
 	 String kampus,
@@ -25,6 +29,8 @@ public class Mahasiswa {
 	 int semester) {
 		this.nama = nama;
 		this.username = username;
+		this.email = email;
+		this.password = password;
 		this.bio = bio;
 		this.about = about;
 		this.kampus = kampus;
@@ -36,6 +42,8 @@ public class Mahasiswa {
 			 Long id_mhs,
 			 String nama,
 			 String username,
+			 String email,
+			 String password,
 			 String bio,
 			 String about,
 			 String kampus,
@@ -44,6 +52,8 @@ public class Mahasiswa {
 				this.id_mhs = id_mhs;
 				this.nama = nama;
 				this.username = username;
+				this.email = email;
+				this.password = password;
 				this.bio = bio;
 				this.about = about;
 				this.kampus = kampus;
@@ -69,6 +79,21 @@ public class Mahasiswa {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getBio() {
 		return bio;

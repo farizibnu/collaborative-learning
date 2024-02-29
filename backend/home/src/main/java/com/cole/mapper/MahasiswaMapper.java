@@ -17,6 +17,8 @@ public class MahasiswaMapper implements RowMapper<Mahasiswa>{
 		mahasiswa.setId_mhs(rs.getLong("id_mhs"));
 		mahasiswa.setNama(rs.getString("nama"));
 		mahasiswa.setUsername(rs.getString("username"));
+		mahasiswa.setEmail(rs.getString("email"));
+		mahasiswa.setPassword(rs.getString("password"));
 		mahasiswa.setBio(rs.getString("bio"));
 		mahasiswa.setAbout(rs.getString("about"));
 		mahasiswa.setKampus(rs.getString("kampus"));

@@ -11,7 +11,7 @@ import './App.css'
 
 const App = () => {
     const activeMenu = true;
-    // const { user } = useUser();
+    const { user } = useUser();
 
     return (
         <div>

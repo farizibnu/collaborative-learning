@@ -31,12 +31,28 @@ public class MahasiswaRepository {
 	}
 	
 	public int saveMahasiswa(Mahasiswa mahasiswa) {
-		String sql = "INSERT INTO mahasiswa(nama, username, bio, about, kampus, jurusan, semester) VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO mahasiswa(nama, username, email, password, bio, about, kampus, jurusan, semester) VALUES(?,?,?,?,?,?,?,?,?)";
 		
 		return jdbcTemplate.update(sql, mahasiswa.getNama(), mahasiswa.getUsername(),
+				mahasiswa.getEmail(), mahasiswa.getPassword(),
 				mahasiswa.getBio(), mahasiswa.getAbout(), mahasiswa.getKampus(),
 				mahasiswa.getJurusan(), mahasiswa.getSemester());
 	}
 	
+	public int updateMahasiswa(Mahasiswa mahasiswa) {
+	    String sql = "UPDATE mahasiswa SET nama = ?, username = ?, email = ?, password = ?, bio = ?, about = ?, kampus = ?, jurusan = ?, semester = ? WHERE id_mhs = ?";
+	    
+	    return jdbcTemplate.update(sql, mahasiswa.getNama(), mahasiswa.getUsername(),
+	            mahasiswa.getEmail(), mahasiswa.getPassword(),
+	            mahasiswa.getBio(), mahasiswa.getAbout(), mahasiswa.getKampus(),
+	            mahasiswa.getJurusan(), mahasiswa.getSemester(), mahasiswa.getId_mhs());
+	}
+
 	
+	public Mahasiswa findMahasiswaByEmailAndPassword(String email, String password) {
+        String sql = "SELECT * FROM mahasiswa WHERE email = ? AND password = ?";
+        RowMapper<Mahasiswa> rowMapper = new MahasiswaMapper();
+        List<Mahasiswa> mahasiswaList = jdbcTemplate.query(sql, rowMapper, email, password);
+        return mahasiswaList.isEmpty() ? null : mahasiswaList.get(0);
+    }
 }

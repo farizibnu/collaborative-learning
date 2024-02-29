@@ -37,9 +37,21 @@ public class MahasiswaController {
 		return mahasiswas;
 	}
 	
+	@PostMapping("/mahasiswa/login")
+    public Object loginMahasiswa(HttpServletResponse response, @RequestBody Mahasiswa mahasiswaParam) {
+        Mahasiswa mahasiswa = mahasiswaService.loginMahasiswa(mahasiswaParam.getEmail(), mahasiswaParam.getPassword());
+        if (mahasiswa != null) {
+            return new Result(200, "Success");
+        } else {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return new Result(401, "Unauthorized");
+        }
+    }
+
 	@PostMapping("/mahasiswa")
 	public Object savePost(HttpServletResponse response, @RequestBody Mahasiswa mahasiswaParam) { 
 		Mahasiswa mahasiswa = new Mahasiswa(mahasiswaParam.getNama(), mahasiswaParam.getUsername(), 
+				mahasiswaParam.getEmail(),mahasiswaParam.getPassword(),
 				mahasiswaParam.getBio(), mahasiswaParam.getAbout(),mahasiswaParam.getKampus(),
 				mahasiswaParam.getJurusan(),mahasiswaParam.getSemester());
 		
@@ -56,6 +68,7 @@ public class MahasiswaController {
 	@PutMapping("/mahasiswa/{id}")
 	public Object modifyMahasiswa(HttpServletResponse response, @PathVariable Long id, @RequestBody Mahasiswa mahasiswaParam) { 
 	    Mahasiswa mahasiswa = new Mahasiswa(id, mahasiswaParam.getNama(), mahasiswaParam.getUsername(), 
+				mahasiswaParam.getEmail(), mahasiswaParam.getPassword(),
 	            mahasiswaParam.getBio(), mahasiswaParam.getAbout(), mahasiswaParam.getKampus(),
 	            mahasiswaParam.getJurusan(), mahasiswaParam.getSemester());
 	    

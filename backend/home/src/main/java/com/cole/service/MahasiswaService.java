@@ -18,6 +18,11 @@ public class MahasiswaService {
 		
 		return mahasiswa;
 	}
+
+	public Mahasiswa loginMahasiswa(String email, String password) {
+        Mahasiswa mahasiswa = mahasiswaRepository.findMahasiswaByEmailAndPassword(email, password);
+        return mahasiswa;
+    }
 	
 	public List<Mahasiswa> getMahasiswas() {
 		List<Mahasiswa> mahasiswaList = mahasiswaRepository.findMahasiswas();
@@ -35,15 +40,49 @@ public class MahasiswaService {
 		return isSuccess;
 	}
 	
-	public boolean updateMahasiswa (Mahasiswa mahasiswa) {
-		Mahasiswa result = mahasiswaRepository.findOne(mahasiswa.getId_mhs());
-		
-		if(result == null)
-			return false;
-				
-		mahasiswaRepository.saveMahasiswa(result);
-		return true;
+	public boolean updateMahasiswa(Mahasiswa mahasiswa) {
+	    Mahasiswa result = mahasiswaRepository.findOne(mahasiswa.getId_mhs());
+
+	    if (result == null)
+	        return false;
+
+	    // Update fields that are allowed to be updated
+	    if (mahasiswa.getNama() != null) {
+	        result.setNama(mahasiswa.getNama());
+	    }
+	    if (mahasiswa.getUsername() != null) {
+	        result.setUsername(mahasiswa.getUsername());
+	    }
+	    if (mahasiswa.getEmail() != null) {
+	        result.setEmail(mahasiswa.getEmail());
+	    }
+	    if (mahasiswa.getBio() != null) {
+	        result.setBio(mahasiswa.getBio());
+	    }
+	    if (mahasiswa.getAbout() != null) {
+	        result.setAbout(mahasiswa.getAbout());
+	    }
+	    if (mahasiswa.getKampus() != null) {
+	        result.setKampus(mahasiswa.getKampus());
+	    }
+	    if (mahasiswa.getJurusan() != null) {
+	        result.setJurusan(mahasiswa.getJurusan());
+	    }
+	    if (mahasiswa.getSemester() == 0){
+	        result.setSemester(mahasiswa.getSemester());
+	    }
+
+	    // Check if password is provided and update it if necessary
+	    String newPassword = mahasiswa.getPassword();
+	    if (newPassword != null && !newPassword.isEmpty()) {
+	        result.setPassword(newPassword);
+	    }
+
+	    // Save the updated Mahasiswa object
+	    mahasiswaRepository.updateMahasiswa(result);
+	    return true;
 	}
+
 	
 	
 }
