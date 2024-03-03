@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from  "react-router-dom";
 import { Sidebar, Navbar } from './components';
-import { Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login } from './pages/';
+import { Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register } from './pages/';
 import './App.css';
 
 const App = () => {
@@ -24,8 +24,14 @@ const App = () => {
         <div>
             <BrowserRouter>
                 {!isLoggedIn ? (
-                    // Show the login page if not logged in
-                    <Login onLogin={handleLogin} />
+                    // Show the main app content if not logged in
+                    <div className='bg-main-bg min-h-screen'>
+                        <Routes>
+                            <Route path='/register' element={<Register onLogin={handleLogin} />} />
+                            <Route path='/login' element={<Login onLogin={handleLogin} />} />
+                            <Route path='*' element={<Navigate to='/register' />} />
+                        </Routes>
+                    </div>
                 ) : (
                     // Show the main app content if logged in
                     <div className='flex relative'>

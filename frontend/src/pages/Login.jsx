@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const LoginPage = ({ onLogin }) => {
     const navigate = useNavigate();
@@ -30,6 +30,7 @@ const LoginPage = ({ onLogin }) => {
     return (
         <div className="flex justify-center items-center h-screen">
             <form onSubmit={handleSubmit} className="w-full max-w-sm">
+                <p className='text-3xl mb-8 font-bold'>Login Page</p>
                 <div className="mb-4">
                     <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">Username</label>
                     <input
@@ -71,8 +72,11 @@ const LoginPage = ({ onLogin }) => {
                         type="submit"
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     >
-                        Sign In
+                        Log In
                     </button>
+                    <Link to={'/register'}>
+                        <p className='underline font-semibold text-sm'>Doesn't have an account? Register here</p>
+                    </Link>
                 </div>
             </form>
         </div>
