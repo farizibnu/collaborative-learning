@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
 
 const LoginPage = ({ onLogin }) => {
     const navigate = useNavigate();
@@ -77,6 +78,18 @@ const LoginPage = ({ onLogin }) => {
                     <Link to={'/register'}>
                         <p className='underline font-semibold text-sm'>Doesn't have an account? Register here</p>
                     </Link>
+                </div>
+                <div className='pt-5'>
+                    <GoogleLogin
+                        onSuccess={credentialResponse => {
+                            console.log(credentialResponse);
+                            onLogin();
+                            navigate('/');
+                        }}
+                        onError={() => {
+                            console.log('Login Failed');
+                        }}
+                    />;
                 </div>
             </form>
         </div>
