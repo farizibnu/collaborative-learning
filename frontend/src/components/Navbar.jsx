@@ -81,9 +81,11 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center p-2 md:ml-6 md:mr-6 relative">
-        <div className='ml-8'>
+        <div className='ml-8 gap-4 flex'>
           {/* <p className='font-bold'>Monday</p>
           <p className='text-sm font-semibold'>24 February 2024</p> */}
+          <Link to="/dosen"><button className="p-3 bg-orange-400 text-md font-bold text-white rounded-2xl">To Dosen</button></Link>
+          <Link to="/"><button className="p-3 bg-orange-400 text-md font-bold text-white rounded-2xl">To Mahasiswa</button></Link>
         </div>
       {/* <NavButton title="Menu" icon={<AiOutlineMenu />} /> */}
       <div className="flex rounded-xl h-9">

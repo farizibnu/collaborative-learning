@@ -7,6 +7,18 @@ body {
     font-family: "Wix Madefor Display", sans-serif;
 }
 
+.card-pattern {
+    /* background-color: #ff8e00;
+    opacity: 1;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #ff8e00 40px ), repeating-linear-gradient( #ffaf8155, #ffaf81 ); */
+    background-color: #fb923c;
+    background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+}
+
+.hexagon {
+    clip-path: polygon(100.00% 50.00%,75.00% 93.30%,25.00% 93.30%,0.00% 50.00%,25.00% 6.70%,75.00% 6.70%);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
