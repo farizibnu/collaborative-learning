@@ -18,11 +18,12 @@ if (!PUBLISHABLE_KEY) {
 
 
   ReactDOM.render(
+    <GoogleOAuthProvider 
+    clientId="1078249712737-p1earl37rhdo8farh04vdt7uasabjpdp.apps.googleusercontent.com">
     <React.StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       <App />
-    </ClerkProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
+  </GoogleOAuthProvider>,
     document.getElementById("root")
   );  
 // ReactDOM.render(
