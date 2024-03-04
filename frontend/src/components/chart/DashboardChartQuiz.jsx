@@ -40,7 +40,6 @@ class App extends Component {
               options={this.state.options}
               series={this.state.series}
               type="line"
-              width="500"
               height={220}
             />
           </div>
