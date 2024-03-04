@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { BrowserRouter, Routes, Route } from  "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from  "react-router-dom";
 import { FiSettings }  from 'react-icons/fi';
 import {Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile} from './components';
 import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register, HomeDosen } from './pages/';
