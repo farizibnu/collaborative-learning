@@ -1,12 +1,15 @@
 package com.cole.vo;
 
+import java.util.Date;
+
 public class Mahasiswa {
 	private Long id_mhs;
 	private String nama;
 	private String username;
 	private String email;
 	private String password;
-	private String bio;
+	private Date tanggal_lahir;
+	private String location;
 	private String about;
 	private String kampus;
 	private String jurusan;
@@ -22,7 +25,6 @@ public class Mahasiswa {
 	 String username,
 	 String email,
 	 String password,
-	 String bio,
 	 String about,
 	 String kampus,
 	 String jurusan,
@@ -31,7 +33,6 @@ public class Mahasiswa {
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.bio = bio;
 		this.about = about;
 		this.kampus = kampus;
 		this.jurusan = jurusan;
@@ -54,7 +55,6 @@ public class Mahasiswa {
 				this.username = username;
 				this.email = email;
 				this.password = password;
-				this.bio = bio;
 				this.about = about;
 				this.kampus = kampus;
 				this.jurusan = jurusan;
@@ -62,6 +62,21 @@ public class Mahasiswa {
 			}
 	
 	//Getter and Setter
+	public Date getTanggal_lahir() {
+		return tanggal_lahir;
+	}
+
+	public void setTanggal_lahir(Date tanggal_lahir) {
+		this.tanggal_lahir = tanggal_lahir;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
 	public Long getId_mhs() {
 		return id_mhs;
 	}
@@ -94,12 +109,6 @@ public class Mahasiswa {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getBio() {
-		return bio;
-	}
-	public void setBio(String bio) {
-		this.bio = bio;
 	}
 	public String getAbout() {
 		return about;
