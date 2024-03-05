@@ -15,6 +15,19 @@ body {
     background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
 }
 
+.landing-pattern {
+    background-color: #fb923c;
+    background-image: url("../src/data/landing-pattern.png");
+}
+
+.char {
+    @apply translate-y-[115px] transition-transform duration-[0.5s];
+}
+
+#title {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
 .hexagon {
     clip-path: polygon(100.00% 50.00%,75.00% 93.30%,25.00% 93.30%,0.00% 50.00%,25.00% 6.70%,75.00% 6.70%);
 }

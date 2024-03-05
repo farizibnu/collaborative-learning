@@ -14,6 +14,7 @@
     "autoprefixer": "^10.4.17",
     "axios": "^1.6.7",
     "cors": "^2.8.5",
+    "gsap": "^3.12.5",
     "postcss": "^8.4.35",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
@@ -22,6 +23,7 @@
     "react-router-dom": "^6.22.0",
     "react-scripts": "5.0.1",
     "react-slick": "^0.30.2",
+    "split-type": "^0.3.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

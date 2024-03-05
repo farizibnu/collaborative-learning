@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from  "react-router-dom";
 import { FiSettings }  from 'react-icons/fi';
 import {Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile} from './components';
-import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register, HomeDosen } from './pages/';
+import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register, HomeDosen, Landing } from './pages/';
 
 import { useStateContext } from './contexts/ContextProvider';
 
@@ -33,7 +33,8 @@ const App = () => {
                         <Routes>
                             <Route path='/register' element={<Register onLogin={handleLogin} />} />
                             <Route path='/login' element={<Login onLogin={handleLogin} />} />
-                            <Route path='*' element={<Navigate to='/register' />} />
+                            <Route path='/landing' element={<Landing/>}/>
+                            <Route path='*' element={<Navigate to='/landing' />} />
                         </Routes>
                     </div>
                 ) : (
