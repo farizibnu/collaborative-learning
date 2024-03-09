@@ -7,7 +7,7 @@ import App from './App';
 import { ClerkProvider } from '@clerk/clerk-react'
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
-
+import {VITE_GOOGLE_AUTH_KEY} from './lib/env'
 // Import your publishable key
 const PUBLISHABLE_KEY = "pk_test_cmljaC1nbGlkZXItOTIuY2xlcmsuYWNjb3VudHMuZGV2JA";
 
@@ -19,7 +19,7 @@ if (!PUBLISHABLE_KEY) {
 
   ReactDOM.render(
     <GoogleOAuthProvider 
-    clientId="1078249712737-p1earl37rhdo8farh04vdt7uasabjpdp.apps.googleusercontent.com">
+    clientId={VITE_GOOGLE_AUTH_KEY}>
     <React.StrictMode>
       <App />
   </React.StrictMode>

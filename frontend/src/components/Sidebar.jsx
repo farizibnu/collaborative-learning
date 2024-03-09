@@ -9,7 +9,7 @@ import axios from 'axios';
 import { links } from '../data/dummy';
 
 const Sidebar = () => {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
   const [profile, setProfile] = useState([]);
 
   const login = useGoogleLogin({
