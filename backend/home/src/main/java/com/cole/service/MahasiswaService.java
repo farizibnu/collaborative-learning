@@ -43,6 +43,7 @@ public class MahasiswaService {
 	public boolean updateMahasiswa(Mahasiswa mahasiswa) {
 	    Mahasiswa result = mahasiswaRepository.findOne(mahasiswa.getId_mhs());
 
+		//return false
 	    if (result == null)
 	        return false;
 
@@ -56,9 +57,12 @@ public class MahasiswaService {
 	    if (mahasiswa.getEmail() != null) {
 	        result.setEmail(mahasiswa.getEmail());
 	    }
-	    if (mahasiswa.getBio() != null) {
-	        result.setBio(mahasiswa.getBio());
-	    }
+	    if (mahasiswa.getTanggal_lahir() != null) {
+	        result.setTanggal_lahir(mahasiswa.getTanggal_lahir());
+	    }    
+		if (mahasiswa.getLocation()!=null) {
+			result.setLocation(mahasiswa.getLocation());
+		}
 	    if (mahasiswa.getAbout() != null) {
 	        result.setAbout(mahasiswa.getAbout());
 	    }

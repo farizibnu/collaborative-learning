@@ -31,20 +31,20 @@ public class MahasiswaRepository {
 	}
 	
 	public int saveMahasiswa(Mahasiswa mahasiswa) {
-		String sql = "INSERT INTO mahasiswa(nama, username, email, password, bio, about, kampus, jurusan, semester) VALUES(?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO mahasiswa(nama, username, email, password, tanggal_lahir, location, about, kampus, jurusan, semester) VALUES(?,?,?,?,?,?,?,?,?,?)";
 		
 		return jdbcTemplate.update(sql, mahasiswa.getNama(), mahasiswa.getUsername(),
 				mahasiswa.getEmail(), mahasiswa.getPassword(),
-				mahasiswa.getBio(), mahasiswa.getAbout(), mahasiswa.getKampus(),
+				mahasiswa.getTanggal_lahir(), mahasiswa.getLocation(), mahasiswa.getAbout(), mahasiswa.getKampus(),
 				mahasiswa.getJurusan(), mahasiswa.getSemester());
 	}
 	
 	public int updateMahasiswa(Mahasiswa mahasiswa) {
-	    String sql = "UPDATE mahasiswa SET nama = ?, username = ?, email = ?, password = ?, bio = ?, about = ?, kampus = ?, jurusan = ?, semester = ? WHERE id_mhs = ?";
+	    String sql = "UPDATE mahasiswa SET nama = ?, username = ?, email = ?, password = ?, tanggal_lahir = ?, location = ?, about = ?, kampus = ?, jurusan = ?, semester = ? WHERE id_mhs = ?";
 	    
 	    return jdbcTemplate.update(sql, mahasiswa.getNama(), mahasiswa.getUsername(),
 	            mahasiswa.getEmail(), mahasiswa.getPassword(),
-	            mahasiswa.getBio(), mahasiswa.getAbout(), mahasiswa.getKampus(),
+	            mahasiswa.getTanggal_lahir(), mahasiswa.getLocation(),mahasiswa.getAbout(), mahasiswa.getKampus(),
 	            mahasiswa.getJurusan(), mahasiswa.getSemester(), mahasiswa.getId_mhs());
 	}
 

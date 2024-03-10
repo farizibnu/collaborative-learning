@@ -19,12 +19,40 @@ public class Mahasiswa {
 	public Mahasiswa () {
 	}
 	
+	//constructor with id
+	public Mahasiswa (
+		Long id_mhs,
+		String nama,
+		String username,
+		String email,
+		String password,
+		Date tanggal_lahir,
+		String location,
+		String about,
+		String kampus,
+		String jurusan,
+		int semester) {
+		this.id_mhs = id_mhs;
+		this.nama = nama;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.tanggal_lahir = tanggal_lahir;
+		this.location = location;
+		this.about = about;
+		this.kampus = kampus;
+		this.jurusan = jurusan;
+		this.semester = semester;
+	}
+		
 	// Constructor
 	public Mahasiswa (
 	 String nama,
 	 String username,
 	 String email,
 	 String password,
+	 Date tanggal_lahir,
+	 String location,
 	 String about,
 	 String kampus,
 	 String jurusan,
@@ -33,33 +61,13 @@ public class Mahasiswa {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.tanggal_lahir = tanggal_lahir;
+		this.location = location;
 		this.about = about;
 		this.kampus = kampus;
 		this.jurusan = jurusan;
 		this.semester = semester;
 	}
-	
-	public Mahasiswa (
-			 Long id_mhs,
-			 String nama,
-			 String username,
-			 String email,
-			 String password,
-			 String bio,
-			 String about,
-			 String kampus,
-			 String jurusan,
-			 int semester) {
-				this.id_mhs = id_mhs;
-				this.nama = nama;
-				this.username = username;
-				this.email = email;
-				this.password = password;
-				this.about = about;
-				this.kampus = kampus;
-				this.jurusan = jurusan;
-				this.semester = semester;
-			}
 	
 	//Getter and Setter
 	public Date getTanggal_lahir() {

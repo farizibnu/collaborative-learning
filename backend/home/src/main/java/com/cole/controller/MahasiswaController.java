@@ -52,7 +52,7 @@ public class MahasiswaController {
 	public Object savePost(HttpServletResponse response, @RequestBody Mahasiswa mahasiswaParam) { 
 		Mahasiswa mahasiswa = new Mahasiswa(mahasiswaParam.getNama(), mahasiswaParam.getUsername(), 
 				mahasiswaParam.getEmail(),mahasiswaParam.getPassword(),
-				mahasiswaParam.getBio(), mahasiswaParam.getAbout(),mahasiswaParam.getKampus(),
+				mahasiswaParam.getTanggal_lahir(), mahasiswaParam.getLocation(), mahasiswaParam.getAbout(),mahasiswaParam.getKampus(),
 				mahasiswaParam.getJurusan(),mahasiswaParam.getSemester());
 		
 		boolean isSuccess = mahasiswaService.saveMahasiswa(mahasiswa);
@@ -66,11 +66,11 @@ public class MahasiswaController {
 	}
 	
 	@PutMapping("/mahasiswa/{id}")
-	public Object modifyMahasiswa(HttpServletResponse response, @PathVariable Long id, @RequestBody Mahasiswa mahasiswaParam) { 
-	    Mahasiswa mahasiswa = new Mahasiswa(id, mahasiswaParam.getNama(), mahasiswaParam.getUsername(), 
+	public Object modifyMahasiswa(HttpServletResponse response, @PathVariable("id") Long id_mhs, @RequestBody Mahasiswa mahasiswaParam) { 
+	    Mahasiswa mahasiswa = new Mahasiswa(id_mhs, mahasiswaParam.getNama(), mahasiswaParam.getUsername(), 
 				mahasiswaParam.getEmail(), mahasiswaParam.getPassword(),
-	            mahasiswaParam.getBio(), mahasiswaParam.getAbout(), mahasiswaParam.getKampus(),
-	            mahasiswaParam.getJurusan(), mahasiswaParam.getSemester());
+	            mahasiswaParam.getTanggal_lahir(), mahasiswaParam.getLocation(),mahasiswaParam.getAbout(), 
+				mahasiswaParam.getKampus(),mahasiswaParam.getJurusan(), mahasiswaParam.getSemester());
 	    
 	    boolean isSuccess = mahasiswaService.updateMahasiswa(mahasiswa);
 	    if(isSuccess) {
