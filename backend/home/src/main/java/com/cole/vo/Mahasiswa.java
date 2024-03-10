@@ -2,8 +2,19 @@ package com.cole.vo;
 
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+
+@Entity
+@Table(name = "mahasiswa")
 public class Mahasiswa {
+
+	@Id
+	@Column(name = "id_mhs")
 	private Long id_mhs;
+
 	private String nama;
 	private String username;
 	private String email;
