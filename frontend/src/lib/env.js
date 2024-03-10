@@ -1,0 +1,1 @@
+export const VITE_GOOGLE_AUTH_KEY = "222198382809-7730drrs9rpu1ghginqjj22j586og7a9.apps.googleusercontent.com"
