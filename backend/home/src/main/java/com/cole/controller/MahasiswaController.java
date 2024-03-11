@@ -26,19 +26,21 @@ public class MahasiswaController {
 	@Autowired
 	MahasiswaService mahasiswaService;
 	
+	//GET Mahasiswa BY ID API
 	@GetMapping("/mahasiswa/{id}")
 	public Mahasiswa getMahasiswa(@PathVariable("id") Long id_mhs) {
 		Mahasiswa mahasiswa = mahasiswaService.getMahasiswa(id_mhs);
 		return mahasiswa;
 	}
 
-	
+	//GET List MAHASISWA API
 	@GetMapping("/mahasiswas")
 	public List<Mahasiswa> getMahasiswas(){
 		List<Mahasiswa> mahasiswas = mahasiswaService.getMahasiswas();
 		return mahasiswas;
 	}
 	
+	// Login Mahasiswa API
 	@PostMapping("/mahasiswa/login")
     public Object loginMahasiswa(HttpServletResponse response, @RequestBody Mahasiswa mahasiswaParam) {
         Mahasiswa mahasiswa = mahasiswaService.loginMahasiswa(mahasiswaParam.getEmail(), mahasiswaParam.getPassword());
@@ -50,6 +52,7 @@ public class MahasiswaController {
         }
     }
 
+	//Register Mahasiswa API
 	@PostMapping("/mahasiswa")
 	public Object savePost(HttpServletResponse response, @RequestBody Mahasiswa mahasiswaParam) { 
 		Mahasiswa mahasiswa = new Mahasiswa(mahasiswaParam.getNama(), mahasiswaParam.getUsername(), 
@@ -70,6 +73,7 @@ public class MahasiswaController {
 		}
 	}
 	
+	//EDIT MAHASISWA BY ID API
 	@PutMapping("/mahasiswa/{id}")
 	public Object modifyMahasiswa(HttpServletResponse response, @PathVariable("id") Long id_mhs, @RequestBody Mahasiswa mahasiswaParam) { 
 	    Mahasiswa mahasiswa = new Mahasiswa(id_mhs, mahasiswaParam.getNama(), mahasiswaParam.getUsername(), 

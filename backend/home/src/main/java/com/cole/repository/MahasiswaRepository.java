@@ -44,6 +44,7 @@ public class MahasiswaRepository {
 		return mahasiswaList.isEmpty() ? null : mahasiswaList.get(0);
 	}
 	
+	// REGISTER
 	public int saveMahasiswa(Mahasiswa mahasiswa) {
 		// Check if username already exists
 		Mahasiswa existingUsername = findByUsername(mahasiswa.getUsername());
@@ -56,7 +57,7 @@ public class MahasiswaRepository {
 		if (existingEmail != null) {
 			return -1; // Email already registered
 		}
-		
+
 		String sql = "INSERT INTO mahasiswa(nama, username, email, password, tanggal_lahir, location, about, kampus, jurusan, semester) VALUES(?,?,?,?,?,?,?,?,?,?)";
 		
 		return jdbcTemplate.update(sql, mahasiswa.getNama(), mahasiswa.getUsername(),

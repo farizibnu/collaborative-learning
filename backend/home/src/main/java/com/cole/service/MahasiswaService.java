@@ -13,28 +13,33 @@ public class MahasiswaService {
 	@Autowired
 	MahasiswaRepository mahasiswaRepository;
 	
+	// Get mahasiswa by id service
 	public Mahasiswa getMahasiswa(Long id_mhs) {
 		Mahasiswa mahasiswa = mahasiswaRepository.findOne(id_mhs);
 		
 		return mahasiswa;
 	}
 
+	// Login mahasiswa service
 	public Mahasiswa loginMahasiswa(String email, String password) {
         Mahasiswa mahasiswa = mahasiswaRepository.findMahasiswaByEmailAndPassword(email, password);
         return mahasiswa;
     }
 
+	// Get list mahasiswa service
 	public List<Mahasiswa> getMahasiswas() {
 		List<Mahasiswa> mahasiswaList = mahasiswaRepository.findMahasiswas();
 	
 		return mahasiswaList;
 	}
 	
+	// Save/Register mahasiswa service
 	public int saveMahasiswa (Mahasiswa mahasiswa) {
 		int result = mahasiswaRepository.saveMahasiswa(mahasiswa);
 		return result;
 	}
 	
+	// Update mahasiswa service
 	public boolean updateMahasiswa(Mahasiswa mahasiswa) {
 	    Mahasiswa result = mahasiswaRepository.findOne(mahasiswa.getId_mhs());
 
