@@ -32,6 +32,17 @@ body {
     clip-path: polygon(100.00% 50.00%,75.00% 93.30%,25.00% 93.30%,0.00% 50.00%,25.00% 6.70%,75.00% 6.70%);
 }
 
+@keyframes show-up {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

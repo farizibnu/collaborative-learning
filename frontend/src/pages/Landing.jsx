@@ -1,5 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { GrLocation, GrTask } from "react-icons/gr";
+import { GiOpenBook } from "react-icons/gi";
+import { IoMdContacts } from 'react-icons/io';
+import { HiChatBubbleLeftRight } from "react-icons/hi2";
 import gsap from 'gsap';
 
 import avatar from '../data/landing-profile.png';
@@ -13,7 +17,7 @@ const Landing = () => {
   useEffect(() => {
     // Animation timeline for the Lorem Ipsum text
     const tl2 = gsap.timeline({ defaults: { duration: 1.5, ease: "back.out(0.5)", opacity: 0 } });
-    tl2.from(bar.current, { delay: 1, scaleX: 0 , transformOrigin: 'left'});
+    tl2.from(bar.current, { delay: 1, scaleY: 0 , transformOrigin: 'bottom'});
 
     const title = new SplitType('#title')
     gsap.to('.char', {
@@ -66,6 +70,18 @@ const Landing = () => {
         </div>
         <div className='col-span-2 bg-orange-400 rounded-tl-full h-screen relative landing-pattern'>
           <img className='absolute bottom-0 left-24 h-full w-auto' src={avatar} alt="" />
+          <div className='p-4 text-white rounded-2xl bg-red-500 w-16 h-16 absolute top-56 left-24 opacity-0 ' style={{animation: 'show-up 1.5s ease forwards, bounce 1.2s ease infinite', animationDelay: '3s'  }}>
+            <HiChatBubbleLeftRight style={{ fontSize: '32px'}}/>
+          </div>
+          <div className='p-4 text-white rounded-2xl bg-green-500 w-16 h-16 absolute top-36 right-56 opacity-0 ' style={{animation: 'show-up 1.5s ease forwards, bounce 1.3s ease infinite', animationDelay: '3.5s' }}>
+            <IoMdContacts style={{ fontSize: '32px'}}/>
+          </div>
+          <div className='p-4 text-white rounded-2xl bg-yellow-400 w-16 h-16 absolute top-32 left-44 opacity-0 ' style={{ animation: 'show-up 1.5s ease forwards, bounce 1.35s ease infinite', animationDelay: '4s' }}>
+            <GrTask style={{ fontSize: '32px'}}/>
+          </div>
+          <div className='p-4 text-white rounded-2xl bg-blue-500 w-16 h-16 absolute top-60 right-36 opacity-0 ' style={{ animation: 'show-up 1.5s ease forwards, bounce 1.25s ease infinite', animationDelay: '4.5s' }}>
+            <GiOpenBook style={{ fontSize: '32px'}}/>
+          </div>
         </div>
       </div>
     </div>
