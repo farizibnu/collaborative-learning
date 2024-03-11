@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink,useNavigate } from 'react-router-dom';
 import { AiOutlineSlackSquare, AiOutlineLeftSquare } from "react-icons/ai";
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import { links } from '../data/dummy';
@@ -8,9 +8,12 @@ import {getUserInfo} from '../lib/userFetch';
 const Sidebar = () => {
   const [profile, setProfile] = useState([]);
   const cookies = new Cookies();
+  const navigation = useNavigate();
   const logOut = () => {
+    cookies.remove("user_token");
     googleLogout();
     setProfile(null);
+    navigation("/login");
   };
   useEffect(
     () => {

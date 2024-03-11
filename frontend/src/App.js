@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate,useNavigate} from "react-router-dom";
 import { FiSettings } from 'react-icons/fi';
 import { Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile } from './components';
 import { Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register, HomeDosen } from './pages/';
 import './App.css'
-import {fetchUserProfile} from './lib/userFetch';
+import {getUserInfo} from './lib/userFetch';
 import Cookies from 'universal-cookie';
 
 const App = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
+    const navigate = useNavigate(); // Add this line for navigation
     const cookies = new Cookies();
     // Function to handle login
     const handleLogin = () => {
-        // Perform authentication logic here
-        // For now, let's assume login is successful
         setIsLoggedIn(true);
     };
 
@@ -23,30 +22,24 @@ const App = () => {
         // Perform logout logic here
         setIsLoggedIn(false);
     };
-    // const initializeGapi = () => {
-    //     gapi.auth2.init({
-    //       clientId: VITE_GOOGLE_AUTH_KEY,
-    //       apiKey:VITE_GOOGLE_API_KEY,
-    //       scope: "http://localhost:3000/",
-    //     });
-    //   };
     useEffect(() => {
         // Move the setUser function here
-        const updateUserProfile = () => {
+        const updateUserProfile = async () => {
             try {
-                
-                const userProfile = fetchUserProfile(cookies.get('user_token'));
+                const userProfile = await getUserInfo();
                 if (!userProfile) {
                     setIsLoggedIn(false);
+                    cookies.remove("user_token");
+
                 } else {
                     setUser(userProfile);
                     setIsLoggedIn(true);
+                    navigate('/');
                 }
             } catch (error) {
                 console.error('Error updating user profile:', error);
             }
         };
-
         // Call the function
         updateUserProfile();
     }, []);
@@ -56,7 +49,7 @@ const App = () => {
     //   },[])
     return (
         <div>
-            <BrowserRouter>
+            
                 {!isLoggedIn ? (
                     // Show the main app content if not logged in
                     <div className='bg-main-bg min-h-screen'>
@@ -93,7 +86,7 @@ const App = () => {
                         </div>
                     </div>
                 )}
-            </BrowserRouter>
+            
         </div>
     );
 }
