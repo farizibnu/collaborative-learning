@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import './index.css';
 import App from './App';
 
-import { ClerkProvider } from '@clerk/clerk-react'
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import {VITE_GOOGLE_AUTH_KEY} from './lib/env'

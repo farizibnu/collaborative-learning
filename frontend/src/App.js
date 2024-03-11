@@ -3,17 +3,14 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { FiSettings } from 'react-icons/fi';
 import { Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile } from './components';
 import { Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register, HomeDosen } from './pages/';
-
-import { useStateContext } from './contexts/ContextProvider';
-import { gapi } from "gapi-script";
 import './App.css'
-import {fetchUserProfile} from './lib/userFetch'
-import { GoogleLogin } from '@react-oauth/google';
-import {VITE_GOOGLE_AUTH_KEY} from './lib/env';
+import {fetchUserProfile} from './lib/userFetch';
+import Cookies from 'universal-cookie';
+
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState();
     const [user, setUser] = useState(null);
-
+    const cookies = new Cookies();
     // Function to handle login
     const handleLogin = () => {
         // Perform authentication logic here
@@ -26,17 +23,19 @@ const App = () => {
         // Perform logout logic here
         setIsLoggedIn(false);
     };
-    const initializeGapi = () => {
-        gapi.client.init({
-          clientId: VITE_GOOGLE_AUTH_KEY,
-          scope: "",
-        });
-      };
+    // const initializeGapi = () => {
+    //     gapi.auth2.init({
+    //       clientId: VITE_GOOGLE_AUTH_KEY,
+    //       apiKey:VITE_GOOGLE_API_KEY,
+    //       scope: "http://localhost:3000/",
+    //     });
+    //   };
     useEffect(() => {
         // Move the setUser function here
         const updateUserProfile = () => {
             try {
-                const userProfile = fetchUserProfile(user);
+                
+                const userProfile = fetchUserProfile(cookies.get('user_token'));
                 if (!userProfile) {
                     setIsLoggedIn(false);
                 } else {
@@ -51,10 +50,10 @@ const App = () => {
         // Call the function
         updateUserProfile();
     }, []);
-      useEffect(() =>{
-        // load and init google api scripts
-        gapi.load("client:auth2", initializeGapi);
-      })
+    //   useEffect(() =>{
+    //     // load and init google api scripts
+    //     gapi.load("client:auth2", initializeGapi);
+    //   },[])
     return (
         <div>
             <BrowserRouter>

@@ -1,42 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import { AiOutlineSlackSquare, AiOutlineLeftSquare } from "react-icons/ai";
-import { MdOutlineCancel } from 'react-icons/md';
-import { GoogleLogin } from '@react-oauth/google';
-import { useStateContext } from '../contexts/ContextProvider';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
-import axios from 'axios';
 import { links } from '../data/dummy';
-
+import Cookies from 'universal-cookie';
+import {getUserInfo} from '../lib/userFetch';
 const Sidebar = () => {
-  const [user, setUser] = useState(null);
   const [profile, setProfile] = useState([]);
-
-  const login = useGoogleLogin({
-    onSuccess: (codeResponse) => setUser(codeResponse),
-    onError: (error) => console.log('Login Failed:', error)
-  });
+  const cookies = new Cookies();
   const logOut = () => {
     googleLogout();
     setProfile(null);
   };
   useEffect(
     () => {
-      if (user) {
-        axios
-          .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-            headers: {
-              Authorization: `Bearer ${user.access_token}`,
-              Accept: 'application/json'
-            }
-          })
-          .then((res) => {
-            setProfile(res.data);
-          })
-          .catch((err) => console.log(err));
-      }
+      const get_user = async ()=> {
+        const user = await getUserInfo();
+        if(user){
+          console.log(user);
+          setProfile(user);
+        }
+      };
+      get_user();
+      
     },
-    [user]
+    []
   );
   const activeMenu = true;
   const activeLink = 'flex items-center gap-5 pl-8 -ml-3 pt-3 pb-2.5 text-orange-400 border-l-4 border-l-orange-400 font-semibold text-md m-2'
@@ -58,7 +46,7 @@ const Sidebar = () => {
             <h2>React Google Login</h2>
             <br />
             <br />
-            {profile ? (
+            {profile &&
               <div>
                 <img src={profile.picture} alt="user image" />
                 <h3>User Logged in</h3>
@@ -68,9 +56,7 @@ const Sidebar = () => {
                 <br />
                 <button onClick={logOut}>Log out</button>
               </div>
-            ) : (
-              <button onClick={login}>Sign in with Google 🚀 </button>
-            )}
+            }
           </div>
           {links.map((item) => (
             <div key={item.title}>
