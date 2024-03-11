@@ -3,7 +3,8 @@ package com.cole.vo;
 public class Result {
 	int result;
 	String message;
-	
+	Long userId; // Menambahkan properti userId
+
 	public Result() {
 	}
 		
@@ -11,6 +12,12 @@ public class Result {
 		this.result = result;
 		this.message = message;
 	}
+
+	public Result(int result, String message, Long userId) {
+        this.result = result;
+        this.message = message;
+        this.userId = userId;
+    }
 		
 	public int getResult() {
 		return result;
@@ -26,4 +33,12 @@ public class Result {
 	public void setMessage(String message) { 
 		this.message = message; 
 	}
+
+	public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }

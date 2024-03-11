@@ -1,57 +1,120 @@
 package com.cole.vo;
 
+import java.util.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+
+@Entity
+@Table(name = "mahasiswa")
 public class Mahasiswa {
+
+	@Id
+	@Column(name = "id_mhs")
 	private Long id_mhs;
+
+	@Column(name = "nama")
 	private String nama;
+
+	@Column(name = "username")
 	private String username;
-	private String bio;
+
+	@Column(name = "email")
+	private String email;
+
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "tanggal_lahir")
+	private Date tanggal_lahir;
+
+	@Column(name = "location")
+	private String location;
+
+	@Column(name = "about")
 	private String about;
+
+	@Column(name = "kampus")
 	private String kampus;
+
+	@Column(name = "jurusan")
 	private String jurusan;
+
+	@Column(name = "semester")
 	private int semester;
 	
 	// Constructor
 	public Mahasiswa () {
 	}
 	
+	//constructor with id
+	public Mahasiswa (
+		Long id_mhs,
+		String nama,
+		String username,
+		String email,
+		String password,
+		Date tanggal_lahir,
+		String location,
+		String about,
+		String kampus,
+		String jurusan,
+		int semester) {
+		this.id_mhs = id_mhs;
+		this.nama = nama;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.tanggal_lahir = tanggal_lahir;
+		this.location = location;
+		this.about = about;
+		this.kampus = kampus;
+		this.jurusan = jurusan;
+		this.semester = semester;
+	}
+		
 	// Constructor
 	public Mahasiswa (
 	 String nama,
 	 String username,
-	 String bio,
+	 String email,
+	 String password,
+	 Date tanggal_lahir,
+	 String location,
 	 String about,
 	 String kampus,
 	 String jurusan,
 	 int semester) {
 		this.nama = nama;
 		this.username = username;
-		this.bio = bio;
+		this.email = email;
+		this.password = password;
+		this.tanggal_lahir = tanggal_lahir;
+		this.location = location;
 		this.about = about;
 		this.kampus = kampus;
 		this.jurusan = jurusan;
 		this.semester = semester;
 	}
 	
-	public Mahasiswa (
-			 Long id_mhs,
-			 String nama,
-			 String username,
-			 String bio,
-			 String about,
-			 String kampus,
-			 String jurusan,
-			 int semester) {
-				this.id_mhs = id_mhs;
-				this.nama = nama;
-				this.username = username;
-				this.bio = bio;
-				this.about = about;
-				this.kampus = kampus;
-				this.jurusan = jurusan;
-				this.semester = semester;
-			}
-	
 	//Getter and Setter
+	public Date getTanggal_lahir() {
+		return tanggal_lahir;
+	}
+
+	public void setTanggal_lahir(Date tanggal_lahir) {
+		this.tanggal_lahir = tanggal_lahir;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
 	public Long getId_mhs() {
 		return id_mhs;
 	}
@@ -70,11 +133,20 @@ public class Mahasiswa {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getBio() {
-		return bio;
+	public String getEmail() {
+		return email;
 	}
-	public void setBio(String bio) {
-		this.bio = bio;
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getAbout() {
 		return about;

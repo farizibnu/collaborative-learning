@@ -1,15 +1,21 @@
 import React, {useEffect, useState} from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from  "react-router-dom";
+// import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from "@clerk/clerk-react"
 import { FiSettings }  from 'react-icons/fi';
 import {Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile} from './components';
-import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register, HomeDosen, Landing } from './pages/';
+import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Register, Login, HomeDosen, Landing, TEST} from './pages/';
 
 import { useStateContext } from './contexts/ContextProvider';
+import { gapi } from "gapi-script";
 
 import './App.css'
+import {fetchUserProfile} from './lib/userFetch'
+import { GoogleLogin } from '@react-oauth/google';
+import {VITE_GOOGLE_AUTH_KEY} from './lib/env';
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [user, setUser] = useState(null);
 
     // Function to handle login
     const handleLogin = () => {
@@ -23,6 +29,36 @@ const App = () => {
         // Perform logout logic here
         setIsLoggedIn(false);
     };
+    const initializeGapi = () => {
+        gapi.client.init({
+            clientId: VITE_GOOGLE_AUTH_KEY,
+            scope: "",
+        });
+    };
+
+    useEffect(() => {
+        // Move the setUser function here
+        const updateUserProfile = () => {
+            try {
+                const userProfile = fetchUserProfile(user);
+                if (!userProfile) {
+                    setIsLoggedIn(false);
+                } else {
+                    setUser(userProfile);
+                    setIsLoggedIn(true);
+                }
+            } catch (error) {
+                console.error('Error updating user profile:', error);
+            }
+        };
+
+        // Call the function
+        updateUserProfile();
+    }, []);
+        useEffect(() =>{
+        // load and init google api scripts
+        gapi.load("client:auth2", initializeGapi);
+    })
 
     return (
         <div>
@@ -57,6 +93,7 @@ const App = () => {
                                     <Route path='/tanya-jawab' element={<TanyaJawab/>}/>
                                     <Route path='/cari-teman' element={<CariTeman/>}/>
                                     <Route path='/quiz' element={<Quiz/>}/>
+                                    <Route path='/test' element={<TEST/>}/>
                                     {/* Add a default route to redirect to Home if no route matches */}
                                     <Route path='*' element={<Navigate to='/' />} />
                                 </Routes>
