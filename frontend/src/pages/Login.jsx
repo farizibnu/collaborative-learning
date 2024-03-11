@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { GoogleLogin } from '@react-oauth/google';
 
 const LoginPage = ({ onLogin }) => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        username: '',
         email: '',
         password: ''
     });
+
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,31 +19,37 @@ const LoginPage = ({ onLogin }) => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Here you can add your login logic, like sending the form data to the server
-        console.log(formData);
-        // Assuming login is successful, call the onLogin function passed as props
-        onLogin();
-        navigate('/');
+
+        try {
+            const response = await fetch('http://localhost:8080/mahasiswa/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                // Jika login berhasil, lanjutkan ke halaman beranda
+                onLogin();
+                navigate('/');
+            } else {
+                const responseData = await response.json();
+                setError(responseData.message || 'Login failed. Please check your credentials.');
+            }
+        } catch (error) {
+            console.error('Error logging in:', error);
+            setError('An error occurred. Please try again later.');
+        }
     };
 
     return (
         <div className="flex justify-center items-center h-screen">
             <form onSubmit={handleSubmit} className="w-full max-w-sm">
                 <p className='text-3xl mb-8 font-bold'>Login Page</p>
-                <div className="mb-4">
-                    <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">Username</label>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        value={formData.username}
-                        onChange={handleChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Enter your username"
-                    />
-                </div>
+                {error && <p className="text-red-500 mb-4">{error}</p>}
                 <div className="mb-4">
                     <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email</label>
                     <input
@@ -78,18 +84,6 @@ const LoginPage = ({ onLogin }) => {
                     <Link to={'/register'}>
                         <p className='underline font-semibold text-sm'>Doesn't have an account? Register here</p>
                     </Link>
-                </div>
-                <div className='pt-5'>
-                    <GoogleLogin
-                        onSuccess={credentialResponse => {
-                            console.log(credentialResponse);
-                            onLogin();
-                            navigate('/');
-                        }}
-                        onError={() => {
-                            console.log('Login Failed');
-                        }}
-                    />;
                 </div>
             </form>
         </div>

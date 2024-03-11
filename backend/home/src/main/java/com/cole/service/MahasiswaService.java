@@ -23,21 +23,16 @@ public class MahasiswaService {
         Mahasiswa mahasiswa = mahasiswaRepository.findMahasiswaByEmailAndPassword(email, password);
         return mahasiswa;
     }
-	
+
 	public List<Mahasiswa> getMahasiswas() {
 		List<Mahasiswa> mahasiswaList = mahasiswaRepository.findMahasiswas();
 	
 		return mahasiswaList;
 	}
 	
-	public boolean saveMahasiswa (Mahasiswa mahasiswa) {
+	public int saveMahasiswa (Mahasiswa mahasiswa) {
 		int result = mahasiswaRepository.saveMahasiswa(mahasiswa);
-		boolean isSuccess = true;
-		
-		if (result == 0) {
-			isSuccess = false;
-		}
-		return isSuccess;
+		return result;
 	}
 	
 	public boolean updateMahasiswa(Mahasiswa mahasiswa) {

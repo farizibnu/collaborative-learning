@@ -3,6 +3,8 @@ package com.cole.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,7 +46,7 @@ public class MahasiswaController {
             return new Result(200, "Success");
         } else {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            return new Result(401, "Unauthorized");
+            return new Result(401, "Incorect Email or Password");
         }
     }
 
@@ -55,13 +57,16 @@ public class MahasiswaController {
 				mahasiswaParam.getTanggal_lahir(), mahasiswaParam.getLocation(), mahasiswaParam.getAbout(),mahasiswaParam.getKampus(),
 				mahasiswaParam.getJurusan(),mahasiswaParam.getSemester());
 		
-		boolean isSuccess = mahasiswaService.saveMahasiswa(mahasiswa);
+		int saveResult = mahasiswaService.saveMahasiswa(mahasiswa);
 		
-		if(isSuccess) {
-			return new Result(200, "Success");
+		if (saveResult == 1) {
+        	return ResponseEntity.ok().body(new Result(200, "Success"));
+		} else if (saveResult == 0) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Result(400, "Username already exists"));
+		} else if (saveResult == -1) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Result(401, "Email already registered"));
 		} else {
-			response.setStatus (HttpServletResponse.SC_INTERNAL_SERVER_ERROR); 
-			return new Result(500, "Fail");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Result(500, "Failed to register"));
 		}
 	}
 	

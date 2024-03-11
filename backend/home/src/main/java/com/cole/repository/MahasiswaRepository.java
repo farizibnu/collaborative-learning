@@ -30,7 +30,33 @@ public class MahasiswaRepository {
 		return this.jdbcTemplate.query(sql, rowMapper);
 	}
 	
+	public Mahasiswa findByUsername(String username) {
+		String sql = "SELECT * FROM mahasiswa WHERE username = ?";
+		RowMapper<Mahasiswa> rowMapper = new MahasiswaMapper();
+		List<Mahasiswa> mahasiswaList = jdbcTemplate.query(sql, rowMapper, username);
+		return mahasiswaList.isEmpty() ? null : mahasiswaList.get(0);
+	}
+
+	public Mahasiswa findByEmail(String email) {
+		String sql = "SELECT * FROM mahasiswa WHERE email = ?";
+		RowMapper<Mahasiswa> rowMapper = new MahasiswaMapper();
+		List<Mahasiswa> mahasiswaList = jdbcTemplate.query(sql, rowMapper, email);
+		return mahasiswaList.isEmpty() ? null : mahasiswaList.get(0);
+	}
+	
 	public int saveMahasiswa(Mahasiswa mahasiswa) {
+		// Check if username already exists
+		Mahasiswa existingUsername = findByUsername(mahasiswa.getUsername());
+		if (existingUsername != null) {
+			return 0; // Username already taken
+		}
+
+		// Check if email already exists
+		Mahasiswa existingEmail = findByEmail(mahasiswa.getEmail());
+		if (existingEmail != null) {
+			return -1; // Email already registered
+		}
+		
 		String sql = "INSERT INTO mahasiswa(nama, username, email, password, tanggal_lahir, location, about, kampus, jurusan, semester) VALUES(?,?,?,?,?,?,?,?,?,?)";
 		
 		return jdbcTemplate.update(sql, mahasiswa.getNama(), mahasiswa.getUsername(),
