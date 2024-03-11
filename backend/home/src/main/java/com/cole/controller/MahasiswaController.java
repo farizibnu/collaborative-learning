@@ -45,7 +45,8 @@ public class MahasiswaController {
     public Object loginMahasiswa(HttpServletResponse response, @RequestBody Mahasiswa mahasiswaParam) {
         Mahasiswa mahasiswa = mahasiswaService.loginMahasiswa(mahasiswaParam.getEmail(), mahasiswaParam.getPassword());
         if (mahasiswa != null) {
-            return new Result(200, "Success");
+			Long userId = mahasiswa.getId_mhs();
+            return new Result(200, "Success", userId);
         } else {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return new Result(401, "Incorect Email or Password");

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const LoginPage = ({ onLogin }) => {
     const navigate = useNavigate();
@@ -33,6 +34,9 @@ const LoginPage = ({ onLogin }) => {
 
             if (response.ok) {
                 // Jika login berhasil, lanjutkan ke halaman beranda
+                const responseData = await response.json();
+                Cookies.set('userId', responseData.userId); // Set cookie untuk userId
+                console.log(responseData.userId);
                 onLogin();
                 navigate('/');
             } else {

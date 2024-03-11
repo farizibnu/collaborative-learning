@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from "react"
 import axios from "axios";
+import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
@@ -65,10 +66,11 @@ const Navbar = () => {
   // const notifButtonRef = useRef(null);
 
   const [mahasiswa, setMahasiswa] = useState("");
+  const UserId = Cookies.get('userId');
 
   const getInfoMahasiswa = async () => {
       try {
-      const response = await axios.get(`http://localhost:8080/mahasiswa/1`);
+      const response = await axios.get(`http://localhost:8080/mahasiswa/${UserId}`);
       setMahasiswa(response.data);
       } catch (error) {
       console.error('Error fetching mahasiswa data:', error);
