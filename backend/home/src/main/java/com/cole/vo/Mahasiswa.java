@@ -10,7 +10,6 @@ import jakarta.persistence.Column;
 @Entity
 @Table(name = "mahasiswa")
 public class Mahasiswa {
-
 	@Id
 	@Column(name = "id_mhs")
 	private Long id_mhs;
@@ -44,24 +43,30 @@ public class Mahasiswa {
 
 	@Column(name = "semester")
 	private int semester;
-	
+	@Column(name = "token")
+	private String token;
+	@Column(name = "profile_url")
+	private String ProfileUrl;
+
 	// Constructor
-	public Mahasiswa () {
+	public Mahasiswa() {
 	}
-	
-	//constructor with id
-	public Mahasiswa (
-		Long id_mhs,
-		String nama,
-		String username,
-		String email,
-		String password,
-		Date tanggal_lahir,
-		String location,
-		String about,
-		String kampus,
-		String jurusan,
-		int semester) {
+
+	// constructor with id
+	public Mahasiswa(
+			Long id_mhs,
+			String nama,
+			String username,
+			String email,
+			String password,
+			Date tanggal_lahir,
+			String location,
+			String about,
+			String kampus,
+			String jurusan,
+			int semester,
+			String token,
+			String ProfileUrl) {
 		this.id_mhs = id_mhs;
 		this.nama = nama;
 		this.username = username;
@@ -73,20 +78,23 @@ public class Mahasiswa {
 		this.kampus = kampus;
 		this.jurusan = jurusan;
 		this.semester = semester;
+		this.ProfileUrl = ProfileUrl;
 	}
-		
+
 	// Constructor
-	public Mahasiswa (
-	 String nama,
-	 String username,
-	 String email,
-	 String password,
-	 Date tanggal_lahir,
-	 String location,
-	 String about,
-	 String kampus,
-	 String jurusan,
-	 int semester) {
+	public Mahasiswa(
+			String nama,
+			String username,
+			String email,
+			String password,
+			Date tanggal_lahir,
+			String location,
+			String about,
+			String kampus,
+			String jurusan,
+			int semester,
+			String token,
+			String ProfileUrl) {
 		this.nama = nama;
 		this.username = username;
 		this.email = email;
@@ -97,9 +105,11 @@ public class Mahasiswa {
 		this.kampus = kampus;
 		this.jurusan = jurusan;
 		this.semester = semester;
+		this.token = token;
+		this.ProfileUrl = ProfileUrl;
 	}
-	
-	//Getter and Setter
+
+	// Getter and Setter
 	public Date getTanggal_lahir() {
 		return tanggal_lahir;
 	}
@@ -115,24 +125,31 @@ public class Mahasiswa {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
 	public Long getId_mhs() {
 		return id_mhs;
 	}
+
 	public void setId_mhs(Long id_mhs) {
 		this.id_mhs = id_mhs;
 	}
+
 	public String getNama() {
 		return nama;
 	}
+
 	public void setNama(String nama) {
 		this.nama = nama;
 	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -148,28 +165,52 @@ public class Mahasiswa {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getAbout() {
 		return about;
 	}
+
 	public void setAbout(String about) {
 		this.about = about;
 	}
+
 	public String getKampus() {
 		return kampus;
 	}
+
 	public void setKampus(String kampus) {
 		this.kampus = kampus;
 	}
+
 	public String getJurusan() {
 		return jurusan;
 	}
+
 	public void setJurusan(String jurusan) {
 		this.jurusan = jurusan;
 	}
+
 	public int getSemester() {
 		return semester;
 	}
+
 	public void setSemester(int semester) {
 		this.semester = semester;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getProfileUrl() {
+		return ProfileUrl;
+	}
+
+	public void setProfileUrl(String ProfileUrl) {
+		this.ProfileUrl = ProfileUrl;
 	}
 }

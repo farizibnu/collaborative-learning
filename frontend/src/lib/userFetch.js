@@ -15,7 +15,7 @@ export const fetchUserProfile = async (access_token) => {
   };
     return axios.get(`${apiUrl}?access_token=${access_token}`, config)
     .then((response) => {
-      console.log(response.data);
+      console.log(JSON.stringify(response.data));
       return response.data;
     })
     .catch((error) => {

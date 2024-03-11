@@ -12,24 +12,24 @@ import com.cole.vo.Mahasiswa;
 
 @Repository
 public class MahasiswaRepository {
-	
+
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+
 	public Mahasiswa findOne(Long id) {
 		String sql = "SELECT * FROM mahasiswa WHERE id_mhs = ?";
-		
-		RowMapper <Mahasiswa> rowMapper = new MahasiswaMapper();
-		
+
+		RowMapper<Mahasiswa> rowMapper = new MahasiswaMapper();
+
 		return this.jdbcTemplate.queryForObject(sql, rowMapper, id);
 	}
-	
+
 	public List<Mahasiswa> findMahasiswas() {
 		String sql = "SELECT * FROM mahasiswa";
 		RowMapper<Mahasiswa> rowMapper = new MahasiswaMapper();
 		return this.jdbcTemplate.query(sql, rowMapper);
 	}
-	
+
 	public Mahasiswa findByUsername(String username) {
 		String sql = "SELECT * FROM mahasiswa WHERE username = ?";
 		RowMapper<Mahasiswa> rowMapper = new MahasiswaMapper();
@@ -43,7 +43,7 @@ public class MahasiswaRepository {
 		List<Mahasiswa> mahasiswaList = jdbcTemplate.query(sql, rowMapper, email);
 		return mahasiswaList.isEmpty() ? null : mahasiswaList.get(0);
 	}
-	
+
 	// REGISTER
 	public int saveMahasiswa(Mahasiswa mahasiswa) {
 		// Check if username already exists
@@ -58,28 +58,27 @@ public class MahasiswaRepository {
 			return -1; // Email already registered
 		}
 
-		String sql = "INSERT INTO mahasiswa(nama, username, email, password, tanggal_lahir, location, about, kampus, jurusan, semester) VALUES(?,?,?,?,?,?,?,?,?,?)";
-		
+		String sql = "INSERT INTO mahasiswa(nama, username, email, password, tanggal_lahir, location, about, kampus, jurusan, semester,token,profile_url) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+
 		return jdbcTemplate.update(sql, mahasiswa.getNama(), mahasiswa.getUsername(),
 				mahasiswa.getEmail(), mahasiswa.getPassword(),
 				mahasiswa.getTanggal_lahir(), mahasiswa.getLocation(), mahasiswa.getAbout(), mahasiswa.getKampus(),
-				mahasiswa.getJurusan(), mahasiswa.getSemester());
-	}
-	
-	public int updateMahasiswa(Mahasiswa mahasiswa) {
-	    String sql = "UPDATE mahasiswa SET nama = ?, username = ?, email = ?, password = ?, tanggal_lahir = ?, location = ?, about = ?, kampus = ?, jurusan = ?, semester = ? WHERE id_mhs = ?";
-	    
-	    return jdbcTemplate.update(sql, mahasiswa.getNama(), mahasiswa.getUsername(),
-	            mahasiswa.getEmail(), mahasiswa.getPassword(),
-	            mahasiswa.getTanggal_lahir(), mahasiswa.getLocation(),mahasiswa.getAbout(), mahasiswa.getKampus(),
-	            mahasiswa.getJurusan(), mahasiswa.getSemester(), mahasiswa.getId_mhs());
+				mahasiswa.getJurusan(), mahasiswa.getSemester(), mahasiswa.getToken(), mahasiswa.getProfileUrl());
 	}
 
-	
+	public int updateMahasiswa(Mahasiswa mahasiswa) {
+		String sql = "UPDATE mahasiswa SET nama = ?, username = ?, email = ?, password = ?, tanggal_lahir = ?, location = ?, about = ?, kampus = ?, jurusan = ?, semester = ?, token = ?, profile_url = ? WHERE id_mhs = ?";
+
+		return jdbcTemplate.update(sql, mahasiswa.getNama(), mahasiswa.getUsername(),
+				mahasiswa.getEmail(), mahasiswa.getPassword(),
+				mahasiswa.getTanggal_lahir(), mahasiswa.getLocation(), mahasiswa.getAbout(), mahasiswa.getKampus(),
+				mahasiswa.getJurusan(), mahasiswa.getSemester(), mahasiswa.getId_mhs());
+	}
+
 	public Mahasiswa findMahasiswaByEmailAndPassword(String email, String password) {
-        String sql = "SELECT * FROM mahasiswa WHERE email = ? AND password = ?";
-        RowMapper<Mahasiswa> rowMapper = new MahasiswaMapper();
-        List<Mahasiswa> mahasiswaList = jdbcTemplate.query(sql, rowMapper, email, password);
-        return mahasiswaList.isEmpty() ? null : mahasiswaList.get(0);
-    }
+		String sql = "SELECT * FROM mahasiswa WHERE email = ? AND password = ?";
+		RowMapper<Mahasiswa> rowMapper = new MahasiswaMapper();
+		List<Mahasiswa> mahasiswaList = jdbcTemplate.query(sql, rowMapper, email, password);
+		return mahasiswaList.isEmpty() ? null : mahasiswaList.get(0);
+	}
 }
