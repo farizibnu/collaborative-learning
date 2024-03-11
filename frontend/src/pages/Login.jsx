@@ -90,7 +90,7 @@ const LoginPage = ({ onLogin }) => {
                         <p className='underline font-semibold text-sm'>Doesn't have an account? Register here</p>
                     </Link>
                 </div>
-                {/* <div className='pt-5'>
+                <div className='pt-5'>
                     <GoogleLogin
                         onSuccess={credentialResponse => {
                             console.log(credentialResponse);
@@ -101,7 +101,7 @@ const LoginPage = ({ onLogin }) => {
                             console.log('Login Failed');
                         }}
                     />;
-                </div> */}
+                </div>
             </form>
 
         </div>
