@@ -20,6 +20,10 @@
     "cors": "^2.8.5",
     "gapi-script": "^1.2.0",
     "phoenix": "^1.7.11",
+    "gsap": "^3.12.5",
+    "gapi-script": "^1.2.0",
+    "js-cookie": "^3.0.5",
+    "jwt-decode": "^4.0.0",
     "postcss": "^8.4.35",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
@@ -29,6 +33,7 @@
     "react-scripts": "5.0.1",
     "react-slick": "^0.30.2",
     "universal-cookie": "^7.1.0",
+    "split-type": "^0.3.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
