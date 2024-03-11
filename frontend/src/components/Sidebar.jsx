@@ -54,7 +54,6 @@ const Sidebar = () => {
                 <p>Email Address: {profile.email}</p>
                 <br />
                 <br />
-                <button onClick={logOut}>Log out</button>
               </div>
             }
           </div>
@@ -79,7 +78,7 @@ const Sidebar = () => {
             </div>
           ))}
           <button
-              onClick={logout}
+              onClick={logOut}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
               Log Out
