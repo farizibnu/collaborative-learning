@@ -15,15 +15,34 @@ public class Mahasiswa {
 	@Column(name = "id_mhs")
 	private Long id_mhs;
 
+	@Column(name = "nama")
 	private String nama;
+
+	@Column(name = "username")
 	private String username;
+
+	@Column(name = "email")
 	private String email;
+
+	@Column(name = "password")
 	private String password;
+
+	@Column(name = "tanggal_lahir")
 	private Date tanggal_lahir;
+
+	@Column(name = "location")
 	private String location;
+
+	@Column(name = "about")
 	private String about;
+
+	@Column(name = "kampus")
 	private String kampus;
+
+	@Column(name = "jurusan")
 	private String jurusan;
+
+	@Column(name = "semester")
 	private int semester;
 	
 	// Constructor
