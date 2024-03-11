@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from  "react-router-dom";
 // import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from "@clerk/clerk-react"
 import { FiSettings }  from 'react-icons/fi';
 import {Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile} from './components';
-import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Register, Login, HomeDosen, TEST} from './pages/';
+import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Register, Login, HomeDosen, Landing, TEST} from './pages/';
 
 import { useStateContext } from './contexts/ContextProvider';
 import { gapi } from "gapi-script";
@@ -69,7 +69,8 @@ const App = () => {
                         <Routes>
                             <Route path='/register' element={<Register onLogin={handleLogin} />} />
                             <Route path='/login' element={<Login onLogin={handleLogin} />} />
-                            <Route path='*' element={<Navigate to='/login' />} />
+                            <Route path='/landing' element={<Landing/>}/>
+                            <Route path='*' element={<Navigate to='/landing' />} />
                         </Routes>
                     </div>
                 ) : (

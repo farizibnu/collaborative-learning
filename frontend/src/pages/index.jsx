@@ -9,3 +9,4 @@ export {default as TEST } from './TEST';
 export {default as Login} from './Login';
 export {default as Register} from './Register';
 export {default as HomeDosen} from './HomeDosen';
+export {default as Landing} from './Landing';
