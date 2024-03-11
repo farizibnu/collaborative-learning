@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Cookies from 'js-cookie';
 import { Link, NavLink } from 'react-router-dom';
 import { AiOutlineSlackSquare, AiOutlineLeftSquare  } from "react-icons/ai";
 import {MdOutlineCancel} from 'react-icons/md';
@@ -12,9 +13,10 @@ const Sidebar = () => {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState([]);
 
-  const logOut = () => {
-    googleLogout();
-    setProfile(null);
+  //On click Logout
+  const logout = () => {
+    Cookies.remove("userId");
+    window.location.href = "/login";
   };
 
   useEffect(
@@ -72,6 +74,12 @@ const Sidebar = () => {
               ))}
             </div>
           ))}
+          <button
+              onClick={logout}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+              Log Out
+          </button>
         </div>
       </>)}
     </div>
