@@ -80,12 +80,14 @@ const Sidebar = () => {
               ))}
             </div>
           ))}
-          <button
-              onClick={logOut}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
-              Log Out
-          </button>
+          <div className=''>
+            <button
+                onClick={logout}
+                className="w-11/12 bg-slate-950 text-orange-400 border-2 border-orange-400 font-bold py-2 px-4 ml-1 rounded-2xl hover:bg-orange-400 hover:text-black"
+                >
+                Log Out
+            </button>
+          </div>
         </div>
       </>)}
     </div>

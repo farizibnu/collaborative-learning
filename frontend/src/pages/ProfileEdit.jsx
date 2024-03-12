@@ -1,23 +1,14 @@
 import React from 'react';
 import {
     Button,
-    Cascader,
-    Checkbox,
-    ColorPicker,
     DatePicker,
     Form,
     Input,
     InputNumber,
-    Radio,
-    Select,
-    Slider,
-    Switch,
-    TreeSelect,
     Upload,
     Row,
     Col,
   } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
 import { FaPencilAlt } from "react-icons/fa";
 import cover1 from '../data/cover2.png';
 import avatar from '../data/avatar.jpg';
