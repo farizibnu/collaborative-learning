@@ -24,7 +24,7 @@ const Register = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:8080/mahasiswa', {
+            const response = await fetch('http://localhost:8080/mahasiswa/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -9,12 +9,15 @@ const Sidebar = () => {
   const [profile, setProfile] = useState([]);
   const cookies = new Cookies();
   const navigation = useNavigate();
+  
   const logOut = () => {
     cookies.remove("user_token");
+    cookies.remove("userId");
     googleLogout();
     setProfile(null);
-    navigation("/login");
+    window.location.href = "/login";
   };
+
   useEffect(
     () => {
       const get_user = async ()=> {
@@ -45,7 +48,7 @@ const Sidebar = () => {
           </button>
         </div>
         <div className='text-white'>
-          <div>
+          {/* <div>
             <h2>React Google Login</h2>
             <br />
             <br />
@@ -59,7 +62,7 @@ const Sidebar = () => {
                 <br />
               </div>
             }
-          </div>
+          </div> */}
           {links.map((item) => (
             <div key={item.title}>
               {/* <p className='text-gray-400 m-3 mt-4 uppercase'>

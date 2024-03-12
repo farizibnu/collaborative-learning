@@ -21,10 +21,10 @@ public class WebConfig implements WebMvcConfigurer {
                 .maxAge(3600);
     }
 
-    @Override
-    public void addInterceptors(@NonNull InterceptorRegistry registry) {
-        // Register the TokenInterceptor to check for "user_token" in the request
-        // headers
-        registry.addInterceptor(new com.cole.interceptor.TokenInterceptor()).addPathPatterns("/**");
-    }
+    // @Override
+    // public void addInterceptors(@NonNull InterceptorRegistry registry) {
+    //     // Register the TokenInterceptor to check for "user_token" in the request
+    //     // headers
+    //     registry.addInterceptor(new com.cole.interceptor.TokenInterceptor()).addPathPatterns("/**");
+    // }
 }

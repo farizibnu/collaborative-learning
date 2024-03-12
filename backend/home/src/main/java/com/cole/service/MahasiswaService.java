@@ -34,7 +34,6 @@ public class MahasiswaService {
 	// Get list mahasiswa service
 	public List<Mahasiswa> getMahasiswas() {
 		List<Mahasiswa> mahasiswaList = mahasiswaRepository.findMahasiswas();
-
 		return mahasiswaList;
 	}
 

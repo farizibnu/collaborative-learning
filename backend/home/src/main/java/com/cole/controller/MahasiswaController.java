@@ -59,7 +59,28 @@ public class MahasiswaController {
 		}
 	}
 
-	// login & registrasi
+	//Register Mahasiswa API
+	@PostMapping("/mahasiswa/register")
+	public Object savePost(HttpServletResponse response, @RequestBody Mahasiswa mahasiswaParam) { 
+		Mahasiswa mahasiswa = new Mahasiswa(mahasiswaParam.getNama(), mahasiswaParam.getUsername(), 
+				mahasiswaParam.getEmail(),mahasiswaParam.getPassword(),
+				mahasiswaParam.getTanggal_lahir(), mahasiswaParam.getLocation(), mahasiswaParam.getAbout(),mahasiswaParam.getKampus(),
+				mahasiswaParam.getJurusan(),mahasiswaParam.getSemester(), mahasiswaParam.getToken(), mahasiswaParam.getProfileUrl());
+		
+		int saveResult = mahasiswaService.saveMahasiswa(mahasiswa);
+		
+		if (saveResult == 1) {
+			return ResponseEntity.ok().body(new Result(200, "Success"));
+		} else if (saveResult == 0) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Result(400, "Username already exists"));
+		} else if (saveResult == -1) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Result(401, "Email already registered"));
+		} else {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Result(500, "Failed to register"));
+		}
+	}
+
+	// login & registrasi OAuth
 	@PostMapping("/mahasiswa")
 	public ResponseEntity<Object> savePost(
 			HttpServletResponse response,
@@ -85,6 +106,8 @@ public class MahasiswaController {
 			// Email exists, return the data
 			return ResponseEntity.ok(existingMahasiswa);
 		}
+
+		//register
 		Mahasiswa mahasiswa = new Mahasiswa(userTokenInfo.getName(), userTokenInfo.getName(),
 				userTokenInfo.getEmail(), mahasiswaParam.getPassword(),
 				mahasiswaParam.getTanggal_lahir(), mahasiswaParam.getLocation(), mahasiswaParam.getAbout(),

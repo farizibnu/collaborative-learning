@@ -8,7 +8,8 @@ import avatar from '../../data/avatar.jpg';
 
 const ProfileHeader = () => {
     const [mahasiswa, setMahasiswa] = useState("");
-    
+    const [profile, setProfile] = useState([]);
+
     const UserId = Cookies.get('userId');
 
     const getInfoMahasiswa = async () => {
@@ -34,7 +35,7 @@ const ProfileHeader = () => {
                     <Flex className='absolute -right-1.5 -bottom-1.5' gap="small" wrap="wrap">
                         <Progress strokeColor={"#fb923c"} type="circle" percent={40} size={109} format={() => ''}/>
                     </Flex>
-                    <img className='h-24 rounded-full' src={avatar} alt="Avatar" />
+                    <img className='h-24 rounded-full' src={mahasiswa.profileUrl ? mahasiswa.profileUrl : avatar} alt="Avatar" />
                 </div>
             </div>
         </div>

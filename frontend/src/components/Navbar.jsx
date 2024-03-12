@@ -65,6 +65,7 @@ const Navbar = () => {
   // const [isVisible, setIsVisible] = useState(false);
   // const notifButtonRef = useRef(null);
 
+  const [profile, setProfile] = useState([]);
   const [mahasiswa, setMahasiswa] = useState("");
   const UserId = Cookies.get('userId');
 
@@ -133,7 +134,7 @@ const Navbar = () => {
             >
               <img
                 className="rounded-full w-8 h-8"
-                src={avatar}
+                src={mahasiswa.profileUrl ? mahasiswa.profileUrl : avatar}
                 alt="user-profile"
               />
               <div className='w-40'>

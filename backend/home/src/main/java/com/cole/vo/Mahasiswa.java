@@ -43,8 +43,10 @@ public class Mahasiswa {
 
 	@Column(name = "semester")
 	private int semester;
+
 	@Column(name = "token")
 	private String token;
+	
 	@Column(name = "profile_url")
 	private String ProfileUrl;
 
