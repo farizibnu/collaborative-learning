@@ -9,7 +9,7 @@ const Sidebar = () => {
   const [profile, setProfile] = useState([]);
   const cookies = new Cookies();
   const navigation = useNavigate();
-  const logOut = () => {
+  const logout = () => {
     cookies.remove("user_token");
     googleLogout();
     setProfile(null);
@@ -45,21 +45,6 @@ const Sidebar = () => {
           </button>
         </div>
         <div className='text-white'>
-          <div>
-            <h2>React Google Login</h2>
-            <br />
-            <br />
-            {profile &&
-              <div>
-                <img src={profile.picture} alt="user image" />
-                <h3>User Logged in</h3>
-                <p>Name: {profile.name}</p>
-                <p>Email Address: {profile.email}</p>
-                <br />
-                <br />
-              </div>
-            }
-          </div>
           {links.map((item) => (
             <div key={item.title}>
               {/* <p className='text-gray-400 m-3 mt-4 uppercase'>
@@ -80,6 +65,20 @@ const Sidebar = () => {
               ))}
             </div>
           ))}
+          <div>
+            <h2 className='mt-24'>React Google Login</h2>
+            {profile &&
+              <div className='w-11/12 border-2 border-orange-400 rounded-2xl flex gap-1 items-center justify-center my-4 p-2'>
+                <img className='rounded-full w-8 h-8' src={profile.picture} alt="user image" />
+                <div className='text-xs'>
+                  <p>{profile.name}</p>
+                  <p>{profile.email}</p>
+                </div>
+                <br />
+                <br />
+              </div>
+            }
+          </div>
           <div className=''>
             <button
                 onClick={logout}
