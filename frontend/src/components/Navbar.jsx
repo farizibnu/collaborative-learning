@@ -141,7 +141,7 @@ const Navbar = () => {
                 <p>
                   <span className="text-gray-400 text-14">Hi,</span>{' '}
                   <span className="text-gray-400 font-bold ml-1 text-14">
-                    {mahasiswa.nama}
+                    {mahasiswa.nama ? mahasiswa.nama : mahasiswa.username}
                   </span>
                 </p>
                 <div className='flex w-full'>

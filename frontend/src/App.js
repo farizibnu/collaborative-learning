@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate,useNavigate} from "react-router-dom";
 import { FiSettings } from 'react-icons/fi';
 import { Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile } from './components';
-import { Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register, HomeDosen } from './pages/';
+import { Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register, HomeDosen, Landing} from './pages/';
 import './App.css'
 import {getUserInfo} from './lib/userFetch';
 import Cookies from 'universal-cookie';
@@ -54,9 +54,10 @@ const App = () => {
                     // Show the main app content if not logged in
                     <div className='bg-main-bg min-h-screen'>
                         <Routes>
+                            <Route path='/landing' element={<Landing />} />
                             <Route path='/register' element={<Register onLogin={handleLogin} />} />
                             <Route path='/login' element={<Login onLogin={handleLogin} />} />
-                            <Route path='*' element={<Navigate to='/login' />} />
+                            <Route path='*' element={<Navigate to='/landing' />} />
                         </Routes>
                     </div>
                 ) : (

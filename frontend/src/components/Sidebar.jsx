@@ -15,7 +15,7 @@ const Sidebar = () => {
     cookies.remove("userId");
     googleLogout();
     setProfile(null);
-    window.location.href = "/login";
+    window.location.href = "/landing";
   };
 
   useEffect(
