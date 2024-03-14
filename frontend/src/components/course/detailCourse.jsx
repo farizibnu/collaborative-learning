@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import courses from "../../data/dataCourse.js";
+import MateriCourse from "./materiCourse.jsx";
 
 const DetailCourse = () => {
   const { id } = useParams(); // Mengambil ID dari URL
@@ -11,11 +12,8 @@ const DetailCourse = () => {
 
   return (
     <div className="justify-items-start">
-      <div className="bg-gradient-to-r from-indigo-300 to-purple-300 p-12 ">
-        <p className="text-3xl font-bold">{course.title}</p>
-      </div>
       <div class=" m-10 grid grid-flow-col justify-stretch ...">
-        {/* komponen */}
+        <MateriCourse />
       </div>
     </div>
   );

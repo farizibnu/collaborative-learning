@@ -26,6 +26,7 @@ import { useStateContext } from "./contexts/ContextProvider";
 import "./App.css";
 import Course from "./pages/Course";
 import DetailCourse from "./components/course/detailCourse";
+import MateriCourse from "./components/course/materiCourse";
 
 const App = () => {
   const activeMenu = true;
@@ -66,6 +67,7 @@ const App = () => {
                 <Route path="/quiz" element={<Quiz />} />
                 <Route path="/course" element={<Course />} />
                 <Route path="/detail-course/:id" element={<DetailCourse />} />
+                <Route path="/materi-course/:id" element={<MateriCourse />} />
               </Routes>
             </div>
           </div>

@@ -22,6 +22,117 @@ const courses = [
     imageCourse: course1,
     duration: "4 weeks",
     price: 99.99,
+    materi: [
+      {
+        id: 1,
+        imageMateri: course1,
+        title: "Variables and Data Types",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 2,
+        title: "Data Types",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 3,
+        title: "Basic Operations",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 4,
+        title: "Control Structures",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 5,
+        title: "Functions",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 6,
+        title: "Arrays and Lists",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+    ],
   },
   {
     id: 2,
@@ -33,6 +144,116 @@ const courses = [
     imageCourse: course2,
     duration: "6 weeks",
     price: 149.99,
+    materi: [
+      {
+        id: 1,
+        title: "Variables and Data Types",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 2,
+        title: "Data Types",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 3,
+        title: "Basic Operations",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 4,
+        title: "Control Structures",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 5,
+        title: "Functions",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 6,
+        title: "Arrays and Lists",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+    ],
   },
   {
     id: 3,
@@ -55,6 +276,116 @@ const courses = [
     imageCourse: course4,
     duration: "4 weeks",
     price: 99.99,
+    materi: [
+      {
+        id: 1,
+        title: "Variables and Data Types",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 2,
+        title: "Data Types",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 3,
+        title: "Basic Operations",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 4,
+        title: "Control Structures",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 5,
+        title: "Functions",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 6,
+        title: "Arrays and Lists",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+    ],
   },
   {
     id: 5,
@@ -66,6 +397,116 @@ const courses = [
     imageCourse: course5,
     duration: "6 weeks",
     price: 149.99,
+    materi: [
+      {
+        id: 1,
+        title: "Variables and Data Types",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 2,
+        title: "Data Types",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 3,
+        title: "Basic Operations",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 4,
+        title: "Control Structures",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 5,
+        title: "Functions",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 6,
+        title: "Arrays and Lists",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+    ],
   },
   {
     id: 6,
@@ -77,6 +518,116 @@ const courses = [
     imageCourse: course6,
     duration: "8 weeks",
     price: 199.99,
+    materi: [
+      {
+        id: 1,
+        title: "Variables and Data Types",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 2,
+        title: "Data Types",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 3,
+        title: "Basic Operations",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 4,
+        title: "Control Structures",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 5,
+        title: "Functions",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+      {
+        id: 6,
+        title: "Arrays and Lists",
+        description:
+          "Learn about variables, data types, and basic operations in programming.",
+        content:
+          "This is the content for Variables and Data Types. It could be a long text explaining the concept, or it could be a video tutorial, or even an attached PDF.",
+        quiz: {
+          questions: [
+            {
+              question: "What is a variable?",
+              options: ["A", "B", "C", "D"],
+              correctAnswer: "A",
+            },
+            // Add more questions as needed
+          ],
+        },
+      },
+    ],
   },
 ];
 

@@ -1,8 +1,10 @@
 import React from "react";
 import courses from "../../data/dataCourse.js";
 import { Link } from "react-router-dom";
+import { LuPencilLine } from "react-icons/lu";
 
 const CourseList = () => {
+  const role = "Student";
   return (
     <div className="grid grid-cols-3 gap-4">
       {courses.map((course) => (
@@ -11,11 +13,30 @@ const CourseList = () => {
             key={course.id}
             className="max-w-sm rounded overflow-hidden shadow-lg"
           >
-            <img
-              className="w-full object-cover h-48"
-              src={course.imageCourse}
-              alt={course.title}
-            />
+            {role === "Teacher" ? (
+              <>
+                <div className="relative">
+                  <img
+                    className="w-full object-cover h-48"
+                    src={course.imageCourse}
+                    alt={course.title}
+                  />
+                  <a
+                    href="https://www.google.com/"
+                    class="absolute top-0 right-0 text-xl font-bold text-white p-2 rounded hover:bg-gray-800 m-2"
+                  >
+                    <LuPencilLine />
+                  </a>
+                </div>
+              </>
+            ) : (
+              <img
+                className="w-full object-cover h-48"
+                src={course.imageLecturer}
+                alt={course.title}
+              />
+            )}
+
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2">{course.title}</div>
               <hr className="border-1 border-black" />
@@ -29,7 +50,7 @@ const CourseList = () => {
                   <div className="flex w-full justify-between mt-1">
                     <span className="ml-1 text-14">{course.instructor}</span>
                     <p className="">
-                      <span className="inline-block bg-blue-400 rounded-full px-3 py-1 text-xs text-white ml-2">
+                      <span className="inline-block truncate bg-blue-400 rounded-full px-3 py-1 text-xs text-white ml-2">
                         {course.topic}
                       </span>
                     </p>

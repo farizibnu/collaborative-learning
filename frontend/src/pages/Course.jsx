@@ -10,7 +10,16 @@ const Course = () => {
           Let’s join our best classes with our famous instructor
         </p>
       </div>
-      <div class=" m-10 grid grid-flow-col justify-stretch ...">
+      <div className="flex justify-end mr-7 m-3">
+        <button
+          data-modal-target="authentication-modal"
+          data-modal-toggle="authentication-modal"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Create Quiz
+        </button>
+      </div>
+      <div class=" m-7 mt-5 grid grid-flow-col justify-stretch ...">
         <CourseList />
       </div>
     </div>
