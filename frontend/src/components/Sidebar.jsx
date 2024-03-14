@@ -83,12 +83,28 @@ const Sidebar = () => {
               ))}
             </div>
           ))}
-          <button
-              onClick={logOut}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
-              Log Out
-          </button>
+          <div>
+            <h2 className='mt-24'>React Google Login</h2>
+            {profile &&
+              <div className='w-11/12 border-2 border-orange-400 rounded-2xl flex gap-1 items-center justify-center my-4 p-2'>
+                <img className='rounded-full w-8 h-8' src={profile.picture} alt="user image" />
+                <div className='text-xs'>
+                  <p>{profile.name}</p>
+                  <p>{profile.email}</p>
+                </div>
+                <br />
+                <br />
+              </div>
+            }
+          </div>
+          <div className=''>
+            <button
+                onClick={logOut}
+                className="w-11/12 bg-slate-950 text-orange-400 border-2 border-orange-400 font-bold py-2 px-4 ml-1 rounded-2xl hover:bg-orange-400 hover:text-black"
+                >
+                Log Out
+            </button>
+          </div>
         </div>
       </>)}
     </div>
