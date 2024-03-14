@@ -58,7 +58,7 @@ const Course = () => {
 
   return (
     <div className="justify-items-start">
-      <div className="bg-gradient-to-r from-indigo-300 to-purple-300 p-12 ">
+      <div className="bg-orange-200 p-12 ">
         <p className="text-3xl font-bold">My Courses</p>
         <p className="text px-1 pt-2">
           Let’s join our best classes with our famous instructor
@@ -67,7 +67,7 @@ const Course = () => {
       <div className="flex justify-end mr-7 m-3">
         <button
           onClick={showModal}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-orange-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded"
         >
           Create Course
         </button>

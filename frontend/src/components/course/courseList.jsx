@@ -45,17 +45,17 @@ const CourseList = () => {
                 src={course.imageLecturer}
                 alt="user-profile"
               />
-              <div className="w-full">
+              <div className="w-full ">
                 <div className="flex w-full justify-between mt-1">
                   <span className="ml-1 text-14">{course.instructor}</span>
                   <p className="">
-                    <span className="inline-block truncate bg-blue-400 rounded-full px-3 py-1 text-xs text-white ml-2">
+                    <span className="inline-block truncate bg-orange-400 rounded-full px-3 py-1 text-xs text-white ml-2">
                       {course.topic}
                     </span>
                   </p>
                 </div>
-                <div className="">
-                  <span className="ml-1 text-14">
+                <div className="-mt-3">
+                  <span className="ml-1  text-14">
                     {course.positionLecturer}
                   </span>
                 </div>
