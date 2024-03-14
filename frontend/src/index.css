@@ -28,10 +28,6 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-.hexagon {
-    clip-path: polygon(100.00% 50.00%,75.00% 93.30%,25.00% 93.30%,0.00% 50.00%,25.00% 6.70%,75.00% 6.70%);
-}
-
 @keyframes show-up {
     0% {
       opacity: 0;
@@ -70,9 +66,6 @@ body {
   .animate-slide-up {
     animation: slideUp 0.3s ease forwards;
   }
-
-
-  
 
 @tailwind base;
 @tailwind components;

@@ -119,7 +119,7 @@ const Navbar = () => {
         <NavButton title="Notification" dotColor="rgb(254, 201, 15)" icon={<RiNotification3Line />} /> */}
         {/* <TooltipComponent content="Profile" position="BottomCenter"> */}
           <div className='flex gap-2 items-center justify-center'>
-            <div className="relative z-50">
+            <div className="relative">
               <button
                 onClick={toggleDropdown}
                 className="flex items-center text-gray-600 hover:text-gray-800"
