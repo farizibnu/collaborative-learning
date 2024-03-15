@@ -4,7 +4,7 @@ import React from 'react';
 
 const FriendRecommend = ({ friend }) => {
   return (
-      <div className="card w-full">
+      <div className="card w-full animate-slide-right">
         <ul className="flex flex-wrap -mx-1 overflow-hidden sm:-mx-1 md:justify-center lg:justify-start">
           <li className="my-1 px-1 w-full">
             <div className='bg-gray-50 border-1 border-gray-200 rounded-xl shadow-sm text-left p-2 w-36 h-72 relative'>

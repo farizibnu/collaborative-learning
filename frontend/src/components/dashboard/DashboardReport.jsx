@@ -20,7 +20,7 @@ const DashboardReport = () => {
             </div>
         </div> */}
         <div className='bg-orange-400 rounded-3xl w-full h-40 flex justify-center items-center card-pattern opacity-1'>
-            <div className='py-4 px-6 space-y-2.5 w-3/5 text-white -ml-8'>
+            <div className='py-4 px-2 space-y-2.5 w-3/5 text-white -ml-8'>
                 <p className='text-2xl font-bold'>Learning is Fun!</p>
                 <p className='text-sm font-medium'>Explore your unlocked achievements and relive the moments of success and progress you've made on your journey.</p>
                 <Link
