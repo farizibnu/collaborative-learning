@@ -12,38 +12,89 @@ import com.cole.vo.Mahasiswa;
 public class MahasiswaService {
 	@Autowired
 	MahasiswaRepository mahasiswaRepository;
-	
+
+	// Get mahasiswa by id service
 	public Mahasiswa getMahasiswa(Long id_mhs) {
 		Mahasiswa mahasiswa = mahasiswaRepository.findOne(id_mhs);
-		
+
 		return mahasiswa;
 	}
-	
+
+	// Login mahasiswa service
+	public Mahasiswa loginMahasiswa(String email, String password) {
+		Mahasiswa mahasiswa = mahasiswaRepository.findMahasiswaByEmailAndPassword(email, password);
+		return mahasiswa;
+	}
+
+	public Mahasiswa getMahasiswaByEmail(String email) {
+		Mahasiswa mahasiswa = mahasiswaRepository.findByEmail(email);
+		return mahasiswa;
+	}
+
+	// Get list mahasiswa service
 	public List<Mahasiswa> getMahasiswas() {
 		List<Mahasiswa> mahasiswaList = mahasiswaRepository.findMahasiswas();
-	
 		return mahasiswaList;
 	}
-	
-	public boolean saveMahasiswa (Mahasiswa mahasiswa) {
+
+	// Save/Register mahasiswa service
+	public int saveMahasiswa(Mahasiswa mahasiswa) {
 		int result = mahasiswaRepository.saveMahasiswa(mahasiswa);
-		boolean isSuccess = true;
-		
-		if (result == 0) {
-			isSuccess = false;
-		}
-		return isSuccess;
+		return result;
 	}
-	
-	public boolean updateMahasiswa (Mahasiswa mahasiswa) {
+
+	// Update mahasiswa service
+	public boolean updateMahasiswa(Mahasiswa mahasiswa) {
 		Mahasiswa result = mahasiswaRepository.findOne(mahasiswa.getId_mhs());
-		
-		if(result == null)
+
+		// return false
+		if (result == null)
 			return false;
-				
-		mahasiswaRepository.saveMahasiswa(result);
+
+		// Update fields that are allowed to be updated
+		if (mahasiswa.getNama() != null) {
+			result.setNama(mahasiswa.getNama());
+		}
+		if (mahasiswa.getUsername() != null) {
+			result.setUsername(mahasiswa.getUsername());
+		}
+		if (mahasiswa.getEmail() != null) {
+			result.setEmail(mahasiswa.getEmail());
+		}
+		if (mahasiswa.getTanggal_lahir() != null) {
+			result.setTanggal_lahir(mahasiswa.getTanggal_lahir());
+		}
+		if (mahasiswa.getLocation() != null) {
+			result.setLocation(mahasiswa.getLocation());
+		}
+		if (mahasiswa.getAbout() != null) {
+			result.setAbout(mahasiswa.getAbout());
+		}
+		if (mahasiswa.getKampus() != null) {
+			result.setKampus(mahasiswa.getKampus());
+		}
+		if (mahasiswa.getJurusan() != null) {
+			result.setJurusan(mahasiswa.getJurusan());
+		}
+		if (mahasiswa.getSemester() == 0) {
+			result.setSemester(mahasiswa.getSemester());
+		}
+		if (mahasiswa.getToken() != null) {
+			result.setToken(mahasiswa.getToken());
+		}
+		if (mahasiswa.getProfileUrl() != null) {
+			result.setProfileUrl(mahasiswa.getProfileUrl());
+		}
+
+		// Check if password is provided and update it if necessary
+		String newPassword = mahasiswa.getPassword();
+		if (newPassword != null && !newPassword.isEmpty()) {
+			result.setPassword(newPassword);
+		}
+
+		// Save the updated Mahasiswa object
+		mahasiswaRepository.updateMahasiswa(result);
 		return true;
 	}
-	
-	
+
 }

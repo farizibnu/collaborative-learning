@@ -3,18 +3,21 @@ import ReactDOM from "react-dom";
 
 import './index.css';
 import App from './App';
+import { BrowserRouter} from "react-router-dom";
 
-import { ClerkProvider } from '@clerk/clerk-react'
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import {VITE_GOOGLE_AUTH_KEY} from './lib/env'
 
-// Import your publishable key
-const PUBLISHABLE_KEY = "pk_test_cmljaC1nbGlkZXItOTIuY2xlcmsuYWNjb3VudHMuZGV2JA";
 
-if (!PUBLISHABLE_KEY) {
-    throw new Error("Missing Publishable Key")
-  }
+  ReactDOM.render(
+    <GoogleOAuthProvider 
+    clientId={VITE_GOOGLE_AUTH_KEY}>
+    <React.StrictMode>
+    <BrowserRouter>
+      <App />
+      </BrowserRouter>
+  </React.StrictMode>
+  </GoogleOAuthProvider>,
+    document.getElementById("root")
+  );  
 
-ReactDOM.render(
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-        <App />
-    </ClerkProvider>
-    , document.getElementById("root"));

@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from "react"
 import axios from "axios";
+import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 import { Flex, Progress } from 'antd';
 import cover1 from '../../data/cover2.png'
@@ -7,10 +8,13 @@ import avatar from '../../data/avatar.jpg';
 
 const ProfileHeader = () => {
     const [mahasiswa, setMahasiswa] = useState("");
+    const [profile, setProfile] = useState([]);
+
+    const UserId = Cookies.get('userId');
 
     const getInfoMahasiswa = async () => {
         try {
-        const response = await axios.get(`http://localhost:8080/mahasiswa/1`);
+        const response = await axios.get(`http://localhost:8080/mahasiswa/${UserId}`);
         setMahasiswa(response.data);
         } catch (error) {
         console.error('Error fetching mahasiswa data:', error);
@@ -31,7 +35,7 @@ const ProfileHeader = () => {
                     <Flex className='absolute -right-1.5 -bottom-1.5' gap="small" wrap="wrap">
                         <Progress strokeColor={"#fb923c"} type="circle" percent={40} size={109} format={() => ''}/>
                     </Flex>
-                    <img className='h-24 rounded-full' src={avatar} alt="Avatar" />
+                    <img className='h-24 rounded-full' src={mahasiswa.profileUrl ? mahasiswa.profileUrl : avatar} alt="Avatar" />
                 </div>
             </div>
         </div>
