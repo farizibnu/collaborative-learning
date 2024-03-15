@@ -135,10 +135,11 @@ const LoginPage = ({ onLogin }) => {
                         <p className='underline font-semibold text-sm'>Doesn't have an account? Register here</p>
                     </Link>
                 </div>
-            </form>
-            <div className='pt-5'>
+                <hr className='my-6 border-1 border-blue-300' />
+                <div className='border-2 border-blue-400 rounded-xl p-3 text-center font-bold hover:bg-blue-500 hover:text-white '>
                     <button onClick={login}>Sign in with Google 🚀 </button> 
-            </div>
+                </div>
+            </form>
         </div>
     );
 };
