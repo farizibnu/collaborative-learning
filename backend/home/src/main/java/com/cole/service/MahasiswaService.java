@@ -31,6 +31,11 @@ public class MahasiswaService {
 		return mahasiswa;
 	}
 
+	public Mahasiswa getMahasiswaByToken(String token) {
+		Mahasiswa mahasiswa = mahasiswaRepository.findByToken(token);
+		return mahasiswa;
+	}
+
 	// Get list mahasiswa service
 	public List<Mahasiswa> getMahasiswas() {
 		List<Mahasiswa> mahasiswaList = mahasiswaRepository.findMahasiswas();
