@@ -28,10 +28,6 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-.hexagon {
-    clip-path: polygon(100.00% 50.00%,75.00% 93.30%,25.00% 93.30%,0.00% 50.00%,25.00% 6.70%,75.00% 6.70%);
-}
-
 @keyframes show-up {
     0% {
       opacity: 0;
@@ -41,6 +37,34 @@ body {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideUp {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+  }
+  
+  .animate-slide-down {
+    animation: slideDown 0.3s ease forwards;
+  }
+  .animate-slide-up {
+    animation: slideUp 0.3s ease forwards;
   }
 
 @tailwind base;

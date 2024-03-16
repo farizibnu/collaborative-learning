@@ -3,7 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-
+import { loginMahasiswa } from '../lib/userFetch';
+import { VITE_BACKEND_CTB_URL } from '../lib/env';
 const LoginPage = ({ onLogin }) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
@@ -28,14 +29,8 @@ const LoginPage = ({ onLogin }) => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:8080/mahasiswa/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
+            const response = await loginMahasiswa(formData);
+            console.log(JSON.stringify(response));
             if (response.ok) {
                 // Jika login berhasil, lanjutkan ke halaman beranda
                 const responseData = await response.json();
@@ -57,36 +52,14 @@ const LoginPage = ({ onLogin }) => {
         onSuccess: (codeResponse) => {
             cookies.set('user_token', codeResponse["access_token"], { path: '/', maxAge: 3600 });
             setUser(codeResponse);
-            const dummy_user = {
-                "mhs_id": -1,
-                "nama": "John Doe",
-                "username": "john_doe",
-                "email": "john.doe@example.com",
-                "password": "securepassword",
-                "tanggal_lahir": new Date("1990-01-01"),
-                "location": "City, Country",
-                "about": "I am a student.",
-                "kampus": "Example University",
-                "jurusan": "Computer Science",
-                "semester": 5
-            };
-            axios.post("http://localhost:8080/mahasiswa", dummy_user, {
-                headers: {
-                    Accept: "*/*",
-                    Authorization: `Bearer ${codeResponse["access_token"]}`,
-                    "Content-Type": "application/json"
-                },
-                withCredentials: true
+            loginMahasiswa(formData);
+            axios.post(`${VITE_BACKEND_CTB_URL}/status`,{user_token : codeResponse["access_token"]})
+            .then((res)=>{
+                console.log(JSON.stringify(res.data));
             })
-            .then((response) => {
-                console.log("ga error", JSON.stringify(response.data));
-                // Set cookie untuk userId setelah berhasil login
-                cookies.set('userId', response.data.id_mhs, { path: '/', maxAge: 3600 });
-                console.log(response.data.id_mhs);
-                onLogin();
-                navigate("/");
-            })
-            .catch((err) => console.log("error ges", JSON.stringify(err)));
+            .catch((err_res)=>{
+                console.log(JSON.stringify(err_res));
+            });
         },
         onError: (error) => console.log('Login Failed:', error)
     });
@@ -135,10 +108,11 @@ const LoginPage = ({ onLogin }) => {
                         <p className='underline font-semibold text-sm'>Doesn't have an account? Register here</p>
                     </Link>
                 </div>
-            </form>
-            <div className='pt-5'>
+                <hr className='my-6 border-1 border-blue-300' />
+                <div className='border-2 border-blue-400 rounded-xl p-3 text-center font-bold hover:bg-blue-500 hover:text-white '>
                     <button onClick={login}>Sign in with Google 🚀 </button> 
-            </div>
+                </div>
+            </form>
         </div>
     );
 };

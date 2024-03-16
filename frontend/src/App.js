@@ -58,6 +58,7 @@ const App = () => {
                             <Route path='/register' element={<Register onLogin={handleLogin} />} />
                             <Route path='/login' element={<Login onLogin={handleLogin} />} />
                             <Route path='*' element={<Navigate to='/landing' />} />
+                            <Route path='/landing' element={<Landing/>} />
                         </Routes>
                     </div>
                 ) : (

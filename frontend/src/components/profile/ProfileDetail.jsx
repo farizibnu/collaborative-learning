@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { FaPeopleGroup } from "react-icons/fa6";
 import { MdOutlineAssignmentTurnedIn } from "react-icons/md";
-
+import { getDataDashboard } from "../../lib/userFetch";
 import badge1 from '../../data/achievement1.png'
 import badge2 from '../../data/achievement2.png'
 import badge3 from '../../data/achievement3.png'

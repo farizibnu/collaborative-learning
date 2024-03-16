@@ -11,15 +11,15 @@ import badge9 from '../../data/achievement9.png'
 
 const AchievementList = ({searchQuery}) => {
     const achievementsData = [
-        {id:1, name: 'Quiz Fever', date: '11 February 2024', description: 'Berhasil meraih Top 3 sebanyak 10 kali', image: badge1 },
-        {id:2, name: 'Helpful Helper', date: '14 February 2024', description: 'Berhasil mendapatkan total like sebanyak 100', image: badge2 },
-        {id:3, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge3 },
-        {id:4, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge4 },
-        {id:5, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge5 },
-        {id:6, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge6 },
-        {id:7, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge7 },
-        {id:8, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge8 },
-        {id:9, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge9 },
+      { id: 1, name: 'Quiz Fever', date: '11 February 2024', description: 'Berhasil meraih Top 3 sebanyak 10 kali', image: badge1, status: 'Complete' },
+      { id: 2, name: 'Helpful Helper', date: '14 February 2024', description: 'Berhasil mendapatkan total like sebanyak 100', image: badge2, status: 'Complete' },
+      { id: 3, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge3, status: 'Incomplete' },
+      { id: 4, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge4, status: 'Incomplete' },
+      { id: 5, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge5, status: 'Incomplete' },
+      { id: 6, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge6, status: 'Incomplete' },
+      { id: 7, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge7, status: 'Incomplete' },
+      { id: 8, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge8, status: 'Incomplete' },
+      { id: 9, name: 'Nama Achievement', date: 'Tanggal diraih', description: 'Detail achievement detail achievement detail achievement detail achievement', image: badge9, status: 'Incomplete' },
         // other achievements...
       ];
 
@@ -29,7 +29,7 @@ const AchievementList = ({searchQuery}) => {
   return (
     <div className='grid grid-cols-3 gap-x-16 gap-y-8 text-center'>
       {filteredAchievements.map(achievement => (
-        <div key={achievement.id} className='rounded-2xl bg-gradient-to-r from-cyan-300 to-blue-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'>
+        <div key={achievement.id} className={`rounded-2xl bg-gradient-to-r from-red-100 to-orange-100 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${achievement.status === 'Incomplete' ? 'bg-slate-200 border-slate-100 grayscale' : ''}`}>
           <div className='h-32 m-4 flex justify-center'>
             <img className='' src={achievement.image} alt={`badge-${achievement.id}`} />
           </div>
