@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from  "react-router-dom";
 import { FiSettings }  from 'react-icons/fi';
 import {Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile} from './components';
-import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register, HomeDosen } from './pages/';
+import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, LoginDashboard, RegisterDashboard, HomeDosen } from './pages/';
 
 import { useStateContext } from './contexts/ContextProvider';
 
@@ -31,8 +31,8 @@ const App = () => {
                     // Show the main app content if not logged in
                     <div className='bg-main-bg min-h-screen'>
                         <Routes>
-                            <Route path='/register' element={<Register onLogin={handleLogin} />} />
-                            <Route path='/login' element={<Login onLogin={handleLogin} />} />
+                            <Route path='/registerdashboard' element={<RegisterDashboard onLogin={handleLogin} />} />
+                            <Route path='/logindashboard' element={<LoginDashboard onLogin={handleLogin} />} />
                             <Route path='*' element={<Navigate to='/register' />} />
                         </Routes>
                     </div>
