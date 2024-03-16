@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Flex, Progress } from 'antd';
 import cover1 from '../../data/cover2.png'
 import avatar from '../../data/avatar.jpg';
-import { getDataDashboard } from "../../lib/userFetch";
+import { getDataDashboard } from "../../lib/fetchData";
 const ProfileHeader = () => {
     const [mahasiswa, setMahasiswa] = useState("");
     useEffect(()=>{

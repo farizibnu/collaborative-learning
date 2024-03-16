@@ -10,7 +10,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { SearchOutlined, BellOutlined } from '@ant-design/icons';
 import { Input, Progress, Dropdown, Space } from 'antd';
 import NotificationDropdown from "./navbar/NotificationDropdown";
-import { getDataDashboard } from "../lib/userFetch";
+import { getDataDashboard } from "../lib/fetchData";
 // import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import avatar from '../data/avatar.jpg';

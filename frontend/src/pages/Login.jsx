@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import { loginMahasiswa } from '../lib/userFetch';
+import { loginMahasiswa, setTokenToOther } from '../lib/fetchData';
 import { VITE_BACKEND_CTB_URL } from '../lib/env';
 const LoginPage = ({ onLogin }) => {
     const navigate = useNavigate();
@@ -53,13 +53,7 @@ const LoginPage = ({ onLogin }) => {
             cookies.set('user_token', codeResponse["access_token"], { path: '/', maxAge: 3600 });
             setUser(codeResponse);
             loginMahasiswa(formData);
-            axios.post(`${VITE_BACKEND_CTB_URL}/status`,{user_token : codeResponse["access_token"]})
-            .then((res)=>{
-                console.log(JSON.stringify(res.data));
-            })
-            .catch((err_res)=>{
-                console.log(JSON.stringify(err_res));
-            });
+            setTokenToOther(codeResponse["access_token"]);
         },
         onError: (error) => console.log('Login Failed:', error)
     });
