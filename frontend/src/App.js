@@ -1,20 +1,19 @@
-import React, {useEffect, useState} from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from  "react-router-dom";
-import { FiSettings }  from 'react-icons/fi';
-import {Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile} from './components';
-import {Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, LoginDashboard, RegisterDashboard, HomeDosen } from './pages/';
-
-import { useStateContext } from './contexts/ContextProvider';
-
+import React, { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route, Navigate,useNavigate} from "react-router-dom";
+import { FiSettings } from 'react-icons/fi';
+import { Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile } from './components';
+import { Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, LoginDashboard, RegisterDashboard, HomeDosen, Landing} from './pages/';
 import './App.css'
+import {getUserInfo} from './lib/fetchData';
+import Cookies from 'universal-cookie';
 
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate(); // Add this line for navigation
+    const cookies = new Cookies();
     // Function to handle login
     const handleLogin = () => {
-        // Perform authentication logic here
-        // For now, let's assume login is successful
         setIsLoggedIn(true);
     };
 
@@ -23,24 +22,50 @@ const App = () => {
         // Perform logout logic here
         setIsLoggedIn(false);
     };
+    useEffect(() => {
+        // Move the setUser function here
+        const updateUserProfile = async () => {
+            try {
+                const userProfile = await getUserInfo();
+                if (!userProfile) {
+                    setIsLoggedIn(false);
+                    cookies.remove("user_token");
 
+                } else {
+                    setUser(userProfile);
+                    setIsLoggedIn(true);
+                    navigate('/');
+                }
+            } catch (error) {
+                console.error('Error updating user profile:', error);
+            }
+        };
+        // Call the function
+        updateUserProfile();
+    }, []);
+    //   useEffect(() =>{
+    //     // load and init google api scripts
+    //     gapi.load("client:auth2", initializeGapi);
+    //   },[])
     return (
         <div>
-            <BrowserRouter>
+            
                 {!isLoggedIn ? (
                     // Show the main app content if not logged in
                     <div className='bg-main-bg min-h-screen'>
                         <Routes>
+                            <Route path='/landing' element={<Landing />} />
                             <Route path='/registerdashboard' element={<RegisterDashboard onLogin={handleLogin} />} />
                             <Route path='/logindashboard' element={<LoginDashboard onLogin={handleLogin} />} />
-                            <Route path='*' element={<Navigate to='/register' />} />
+                            <Route path='*' element={<Navigate to='/landing' />} />
+                            <Route path='/landing' element={<Landing/>} />
                         </Routes>
                     </div>
                 ) : (
                     // Show the main app content if logged in
                     <div className='flex relative'>
                         <div className='w-72 fixed sidebar bg-white'>
-                            <Sidebar/>
+                            <Sidebar />
                         </div>
                         <div className='bg-main-bg min-h-screen md:ml-72 w-full'>
                             <div className='fixed md:static bg-white navbar w-full'>
@@ -48,14 +73,14 @@ const App = () => {
                             </div>
                             <div>
                                 <Routes>
-                                    <Route path='/' element={<Home/>}/>
-                                    <Route path='/dosen' element={<HomeDosen/>}/>
+                                    <Route path='/' element={<Home />} />
+                                    <Route path='/dosen' element={<HomeDosen />} />
                                     <Route path='/profile' element={<Profile />} />
-                                    <Route path='/profile/edit' element={<ProfileEdit/>} />
-                                    <Route path='/profile/achievement' element={<Achievement/>}/>
-                                    <Route path='/tanya-jawab' element={<TanyaJawab/>}/>
-                                    <Route path='/cari-teman' element={<CariTeman/>}/>
-                                    <Route path='/quiz' element={<Quiz/>}/>
+                                    <Route path='/profile/edit' element={<ProfileEdit />} />
+                                    <Route path='/profile/achievement' element={<Achievement />} />
+                                    <Route path='/tanya-jawab' element={<TanyaJawab />} />
+                                    <Route path='/cari-teman' element={<CariTeman />} />
+                                    <Route path='/quiz' element={<Quiz />} />
                                     {/* Add a default route to redirect to Home if no route matches */}
                                     <Route path='*' element={<Navigate to='/' />} />
                                 </Routes>
@@ -63,7 +88,7 @@ const App = () => {
                         </div>
                     </div>
                 )}
-            </BrowserRouter>
+            
         </div>
     );
 }

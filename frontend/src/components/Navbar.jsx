@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from "react"
 import axios from "axios";
+import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
@@ -8,16 +9,8 @@ import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { SearchOutlined, BellOutlined } from '@ant-design/icons';
 import { Input, Progress, Dropdown, Space } from 'antd';
-import {
-  KnockFeedProvider,
-  NotificationIconButton,
-  NotificationFeedPopover,
-} from "@knocklabs/react-notification-feed";
-// https://www.npmjs.com/package/@knocklabs/react-notification-feed?activeTab=readme
-
-// Required CSS import, unless you're overriding the styling
-import "@knocklabs/react-notification-feed/dist/index.css";
-
+import NotificationDropdown from "./navbar/NotificationDropdown";
+import { getDataDashboard } from "../lib/fetchData";
 // import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import avatar from '../data/avatar.jpg';
@@ -41,34 +34,22 @@ import avatar from '../data/avatar.jpg';
 //   {/* </TooltipComponent> */}
 // );
 
-const items = [
-  {
-    label: <p>Notification</p>,
-  },
-
-  {
-    label: <p>Notification</p>,
-    type: 'divider',
-  },
-  {
-    label: <a href="https://www.aliyun.com">2nd menu item 2nd menu itemv 2nd menu item 2nd menu item</a>,
-    key: '1',
-  },
-  {
-    label: '2nd menu item',
-    key: '2',
-  },
-];
-
 const Navbar = () => {
   // const [isVisible, setIsVisible] = useState(false);
   // const notifButtonRef = useRef(null);
 
+  const [profile, setProfile] = useState([]);
   const [mahasiswa, setMahasiswa] = useState("");
+  const UserId = Cookies.get('userId');
+  const [showDropdown, setShowDropdown] = useState(true);
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
   const getInfoMahasiswa = async () => {
       try {
-      const response = await axios.get(`http://localhost:8080/mahasiswa/1`);
+      const response = await getDataDashboard("mahasiswa");
       setMahasiswa(response.data);
       } catch (error) {
       console.error('Error fetching mahasiswa data:', error);
@@ -78,6 +59,46 @@ const Navbar = () => {
   useEffect(()=>{
       getInfoMahasiswa();
   }, []);
+
+  const notifications = [
+    {
+      avatar: 'url_to_avatar',
+      username: 'John DoeDoe Doe Doe Doe DOe DOeooo DOeooo',
+      message: 'Liked your post',
+      time: '2 minutes ago',
+    },
+    {
+      avatar: 'url_to_avatar',
+      username: 'Jane Smith',
+      message: 'Commented on your photo comment comemtne cmomementmcoemm cmoeme cmoem',
+      time: '1 hour ago',
+    },
+    {
+      avatar: 'url_to_avatar',
+      username: 'Jane Smith',
+      message: 'Commented on your photo',
+      time: '1 hour ago aho sahdo aho ahao haoha hoah aho ',
+    },
+    {
+      avatar: 'url_to_avatar',
+      username: 'John DoeDoe Doe Doe Doe DOe DOeooo DOeooo',
+      message: 'Liked your post',
+      time: '2 minutes ago',
+    },
+    {
+      avatar: 'url_to_avatar',
+      username: 'Jane Smith',
+      message: 'Commented on your photo comment comemtne cmomementmcoemm cmoeme cmoem',
+      time: '1 hour ago',
+    },
+    {
+      avatar: 'url_to_avatar',
+      username: 'Jane Smith',
+      message: 'Commented on your photo',
+      time: '1 hour ago aho sahdo aho ahao haoha hoah aho ',
+    },
+    // Add more notifications as needed
+  ];
 
   return (
     <div className="flex justify-between items-center p-2 md:ml-6 md:mr-6 relative">
@@ -100,13 +121,21 @@ const Navbar = () => {
         <NavButton title="Notification" dotColor="rgb(254, 201, 15)" icon={<RiNotification3Line />} /> */}
         {/* <TooltipComponent content="Profile" position="BottomCenter"> */}
           <div className='flex gap-2 items-center justify-center'>
-            <Dropdown className='w-30' menu={{ items }} trigger={['click']} placement="bottomRight">
-              <a onClick={(e) => e.preventDefault()}>
+            <div className="relative">
+              <button
+                onClick={toggleDropdown}
+                className="flex items-center text-gray-600 hover:text-gray-800"
+              >
                 <Space>
                   <BellOutlined style={{ fontSize: '22px', color: '#374151' }} />
                 </Space>
-              </a>
-            </Dropdown>
+              </button>
+              <NotificationDropdown
+                notifications={notifications}
+                isOpen={showDropdown}
+                toggleDropdown={toggleDropdown}
+              />
+            </div>
                 {/* <KnockFeedProvider
                   apiKey={process.env.KNOCK_PUBLIC_API_KEY}
                   feedId={process.env.KNOCK_FEED_ID}
@@ -131,14 +160,14 @@ const Navbar = () => {
             >
               <img
                 className="rounded-full w-8 h-8"
-                src={avatar}
+                src={mahasiswa.profileUrl ? mahasiswa.profileUrl : avatar}
                 alt="user-profile"
               />
               <div className='w-40'>
                 <p>
                   <span className="text-gray-400 text-14">Hi,</span>{' '}
                   <span className="text-gray-400 font-bold ml-1 text-14">
-                    {mahasiswa.nama}
+                    {mahasiswa.nama ? mahasiswa.nama : mahasiswa.username}
                   </span>
                 </p>
                 <div className='flex w-full'>
