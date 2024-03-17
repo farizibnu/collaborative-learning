@@ -56,7 +56,10 @@ const CourseList = () => {
           )}
 
           <div className="px-6 py-4">
-            <Link key={course.id} to={`/detail-course/${course.id}`}>
+            <Link
+              key={course.id}
+              to={`http://moaibad.southeastasia.cloudapp.azure.com/moodle/course/view.php?id=${course.id}`}
+            >
               <div className="font-bold text-xl mb-2">{course.displayname}</div>
             </Link>
             <hr className="border-1 border-black" />
