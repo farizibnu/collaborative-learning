@@ -23,9 +23,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     // @Override
     // public void addInterceptors(@NonNull InterceptorRegistry registry) {
-    // // Register the TokenInterceptor to check for "user_token" in the request
-    // // headers
-    // registry.addInterceptor(new
-    // com.cole.interceptor.TokenInterceptor()).addPathPatterns("/**");
+    //     // Register the TokenInterceptor to check for "user_token" in the request
+    //     // headers
+    //     registry.addInterceptor(new com.cole.interceptor.TokenInterceptor()).addPathPatterns("/**");
     // }
 }

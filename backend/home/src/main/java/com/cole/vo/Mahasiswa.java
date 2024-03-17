@@ -50,6 +50,17 @@ public class Mahasiswa {
 	@Column(name = "profile_url")
 	private String ProfileUrl;
 
+	@Column (name = "role")
+	private String role;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	// Constructor
 	public Mahasiswa() {
 	}
@@ -109,6 +120,7 @@ public class Mahasiswa {
 		this.semester = semester;
 		this.token = token;
 		this.ProfileUrl = ProfileUrl;
+
 	}
 
 	// Getter and Setter

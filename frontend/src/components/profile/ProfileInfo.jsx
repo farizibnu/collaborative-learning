@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from "react"
 import axios from "axios";
 import Cookies from 'js-cookie';
-import { getDataDashboard } from "../../lib/userFetch";
+import { getDataDashboard } from "../../lib/fetchData";
 const ProfileInfo = () => {
   const [mahasiswa, setMahasiswa] = useState("");
 

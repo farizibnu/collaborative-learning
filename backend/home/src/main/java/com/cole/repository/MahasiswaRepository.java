@@ -65,12 +65,12 @@ public class MahasiswaRepository {
 			return -1; // Email already registered
 		}
 
-		String sql = "INSERT INTO mahasiswa(nama, username, email, password, tanggal_lahir, location, about, kampus, jurusan, semester,token,profile_url) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO mahasiswa(nama, username, email, password, tanggal_lahir, location, about, kampus, jurusan, semester,token,profile_url, role) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		return jdbcTemplate.update(sql, mahasiswa.getNama(), mahasiswa.getUsername(),
 				mahasiswa.getEmail(), mahasiswa.getPassword(),
 				mahasiswa.getTanggal_lahir(), mahasiswa.getLocation(), mahasiswa.getAbout(), mahasiswa.getKampus(),
-				mahasiswa.getJurusan(), mahasiswa.getSemester(), mahasiswa.getToken(), mahasiswa.getProfileUrl());
+				mahasiswa.getJurusan(), mahasiswa.getSemester(), mahasiswa.getToken(), mahasiswa.getProfileUrl(), "mahasiswa");
 	}
 
 	public int updateMahasiswa(Mahasiswa mahasiswa) {

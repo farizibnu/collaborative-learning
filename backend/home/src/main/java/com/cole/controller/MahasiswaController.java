@@ -113,10 +113,13 @@ public class MahasiswaController {
 		System.out.println(userTokenInfo.getEmail());
 		// Check if the email exists
 		Mahasiswa existingMahasiswa = mahasiswaService.getMahasiswaByEmail(userTokenInfo.getEmail());
-		existingMahasiswa.setToken(userToken);
-		if (existingMahasiswa != null && mahasiswaService.updateMahasiswa(existingMahasiswa)) {
+		if (existingMahasiswa != null) {
+			existingMahasiswa.setToken(userToken);
 			// Email exists, return the data
-			System.out.println(existingMahasiswa.getToken());
+			boolean updateMahasiswa = mahasiswaService.updateMahasiswa(existingMahasiswa);
+			if (updateMahasiswa) {
+				System.out.println(existingMahasiswa.getToken());
+			}
 			return ResponseEntity.ok(existingMahasiswa);
 		}
 
