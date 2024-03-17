@@ -10,7 +10,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { SearchOutlined, BellOutlined } from '@ant-design/icons';
 import { Input, Progress, Dropdown, Space } from 'antd';
 import NotificationDropdown from "./navbar/NotificationDropdown";
-
+import { getDataDashboard } from "../lib/fetchData";
 // import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import avatar from '../data/avatar.jpg';
@@ -49,7 +49,7 @@ const Navbar = () => {
 
   const getInfoMahasiswa = async () => {
       try {
-      const response = await axios.get(`http://localhost:8080/mahasiswa/${UserId}`);
+      const response = await getDataDashboard("mahasiswa");
       setMahasiswa(response.data);
       } catch (error) {
       console.error('Error fetching mahasiswa data:', error);
@@ -62,43 +62,35 @@ const Navbar = () => {
 
   const notifications = [
     {
-      avatar: 'url_to_avatar',
-      username: 'John DoeDoe Doe Doe Doe DOe DOeooo DOeooo',
-      message: 'Liked your post',
-      time: '2 minutes ago',
+      username: 'John Doe',
+      message: 'Sent you a friend request',
+      time: '10:30 AM',
+      type: 'friendRequest',
+      link: '/profile/john_doe'
     },
     {
-      avatar: 'url_to_avatar',
-      username: 'Jane Smith',
-      message: 'Commented on your photo comment comemtne cmomementmcoemm cmoeme cmoem',
-      time: '1 hour ago',
+      username: 'Alice Smith',
+      message: 'Answered your question',
+      time: 'Yesterday',
+      type: 'questionAnswered',
+      link: '/question/123'
     },
     {
-      avatar: 'url_to_avatar',
-      username: 'Jane Smith',
-      message: 'Commented on your photo',
-      time: '1 hour ago aho sahdo aho ahao haoha hoah aho ',
+      username: 'Quiz Results',
+      message: 'Your quiz result is available',
+      time: '2 days ago',
+      type: 'quizResult',
+      link: '/quiz/123/result'
     },
     {
-      avatar: 'url_to_avatar',
-      username: 'John DoeDoe Doe Doe Doe DOe DOeooo DOeooo',
-      message: 'Liked your post',
-      time: '2 minutes ago',
-    },
-    {
-      avatar: 'url_to_avatar',
-      username: 'Jane Smith',
-      message: 'Commented on your photo comment comemtne cmomementmcoemm cmoeme cmoem',
-      time: '1 hour ago',
-    },
-    {
-      avatar: 'url_to_avatar',
-      username: 'Jane Smith',
-      message: 'Commented on your photo',
-      time: '1 hour ago aho sahdo aho ahao haoha hoah aho ',
-    },
-    // Add more notifications as needed
+      username: 'New Message',
+      message: 'You have a new message',
+      time: '3 days ago',
+      type: 'newMessage',
+      link: '/messages'
+    }
   ];
+  
 
   return (
     <div className="flex justify-between items-center p-2 md:ml-6 md:mr-6 relative">
@@ -121,7 +113,7 @@ const Navbar = () => {
         <NavButton title="Notification" dotColor="rgb(254, 201, 15)" icon={<RiNotification3Line />} /> */}
         {/* <TooltipComponent content="Profile" position="BottomCenter"> */}
           <div className='flex gap-2 items-center justify-center'>
-            <div className="relative z-50">
+            <div className="relative">
               <button
                 onClick={toggleDropdown}
                 className="flex items-center text-gray-600 hover:text-gray-800"

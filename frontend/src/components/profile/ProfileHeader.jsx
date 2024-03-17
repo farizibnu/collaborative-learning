@@ -5,23 +5,21 @@ import { Link } from 'react-router-dom';
 import { Flex, Progress } from 'antd';
 import cover1 from '../../data/cover2.png'
 import avatar from '../../data/avatar.jpg';
-
+import { getDataDashboard } from "../../lib/fetchData";
 const ProfileHeader = () => {
     const [mahasiswa, setMahasiswa] = useState("");
-    const [profile, setProfile] = useState([]);
-
-    const UserId = Cookies.get('userId');
-
-    const getInfoMahasiswa = async () => {
-        try {
-        const response = await axios.get(`http://localhost:8080/mahasiswa/${UserId}`);
-        setMahasiswa(response.data);
-        } catch (error) {
-        console.error('Error fetching mahasiswa data:', error);
-        }
-    };
-
     useEffect(()=>{
+        const getInfoMahasiswa = async () => {
+            try {
+                const response = await getDataDashboard("/mahasiswa");
+                if(response){
+                    setMahasiswa(response);
+                }
+                console.log("mahasiswa : ",JSON.stringify(response));
+            } catch (error) {
+            console.error('Error fetching mahasiswa data:', error);
+            }
+        };
         getInfoMahasiswa();
     }, []);
 

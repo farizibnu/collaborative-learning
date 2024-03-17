@@ -4,7 +4,7 @@ import { AiOutlineSlackSquare, AiOutlineLeftSquare } from "react-icons/ai";
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import { links } from '../data/dummy';
 import Cookies from 'universal-cookie';
-import {getUserInfo} from '../lib/userFetch';
+import {getUserInfo} from '../lib/fetchData';
 const Sidebar = () => {
   const [profile, setProfile] = useState([]);
   const cookies = new Cookies();

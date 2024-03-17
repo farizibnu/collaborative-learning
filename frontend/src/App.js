@@ -4,7 +4,7 @@ import { FiSettings } from 'react-icons/fi';
 import { Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile } from './components';
 import { Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register, HomeDosen, Landing} from './pages/';
 import './App.css'
-import {getUserInfo} from './lib/userFetch';
+import {getUserInfo} from './lib/fetchData';
 import Cookies from 'universal-cookie';
 
 const App = () => {

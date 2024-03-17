@@ -46,6 +46,16 @@ public class MahasiswaController {
 		return mahasiswas;
 	}
 
+	// GET MAHASISWA API
+	@GetMapping("/mahasiswa")
+	public Mahasiswa getMahasiswaByToken(@RequestHeader("Authorization") String authorizationHeader) {
+		String userToken = authorizationHeader.replace("Bearer ", "");
+		System.out.println("token : " + userToken);
+		Mahasiswa mahasiswa = mahasiswaService.getMahasiswaByToken(userToken);
+		System.out.println("mahasiswa : " + mahasiswa);
+		return mahasiswa;
+	}
+
 	// Login Mahasiswa API
 	@PostMapping("/mahasiswa/login")
 	public Object loginMahasiswa(HttpServletResponse response, @RequestBody Mahasiswa mahasiswaParam) {
@@ -59,16 +69,18 @@ public class MahasiswaController {
 		}
 	}
 
-	//Register Mahasiswa API
+	// Register Mahasiswa API
 	@PostMapping("/mahasiswa/register")
-	public Object savePost(HttpServletResponse response, @RequestBody Mahasiswa mahasiswaParam) { 
-		Mahasiswa mahasiswa = new Mahasiswa(mahasiswaParam.getNama(), mahasiswaParam.getUsername(), 
-				mahasiswaParam.getEmail(),mahasiswaParam.getPassword(),
-				mahasiswaParam.getTanggal_lahir(), mahasiswaParam.getLocation(), mahasiswaParam.getAbout(),mahasiswaParam.getKampus(),
-				mahasiswaParam.getJurusan(),mahasiswaParam.getSemester(), mahasiswaParam.getToken(), mahasiswaParam.getProfileUrl());
-		
+	public Object registerMahasiswa(HttpServletResponse response, @RequestBody Mahasiswa mahasiswaParam) {
+		Mahasiswa mahasiswa = new Mahasiswa(mahasiswaParam.getNama(), mahasiswaParam.getUsername(),
+				mahasiswaParam.getEmail(), mahasiswaParam.getPassword(),
+				mahasiswaParam.getTanggal_lahir(), mahasiswaParam.getLocation(), mahasiswaParam.getAbout(),
+				mahasiswaParam.getKampus(),
+				mahasiswaParam.getJurusan(), mahasiswaParam.getSemester(), mahasiswaParam.getToken(),
+				mahasiswaParam.getProfileUrl());
+
 		int saveResult = mahasiswaService.saveMahasiswa(mahasiswa);
-		
+
 		if (saveResult == 1) {
 			return ResponseEntity.ok().body(new Result(200, "Success"));
 		} else if (saveResult == 0) {
@@ -81,8 +93,8 @@ public class MahasiswaController {
 	}
 
 	// login & registrasi OAuth
-	@PostMapping("/mahasiswa")
-	public ResponseEntity<Object> savePost(
+	@PostMapping("/oauth/mahasiswa")
+	public ResponseEntity<Object> oauthMahasiswa(
 			HttpServletResponse response,
 			@RequestBody Mahasiswa mahasiswaParam,
 			@RequestHeader("Authorization") String authorizationHeader) {
@@ -101,13 +113,17 @@ public class MahasiswaController {
 		System.out.println(userTokenInfo.getEmail());
 		// Check if the email exists
 		Mahasiswa existingMahasiswa = mahasiswaService.getMahasiswaByEmail(userTokenInfo.getEmail());
-
 		if (existingMahasiswa != null) {
+			existingMahasiswa.setToken(userToken);
 			// Email exists, return the data
+			boolean updateMahasiswa = mahasiswaService.updateMahasiswa(existingMahasiswa);
+			if (updateMahasiswa) {
+				System.out.println(existingMahasiswa.getToken());
+			}
 			return ResponseEntity.ok(existingMahasiswa);
 		}
 
-		//register
+		// register
 		Mahasiswa mahasiswa = new Mahasiswa(userTokenInfo.getName(), userTokenInfo.getName(),
 				userTokenInfo.getEmail(), mahasiswaParam.getPassword(),
 				mahasiswaParam.getTanggal_lahir(), mahasiswaParam.getLocation(), mahasiswaParam.getAbout(),

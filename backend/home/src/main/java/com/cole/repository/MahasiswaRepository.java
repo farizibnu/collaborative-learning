@@ -37,6 +37,13 @@ public class MahasiswaRepository {
 		return mahasiswaList.isEmpty() ? null : mahasiswaList.get(0);
 	}
 
+	public Mahasiswa findByToken(String token) {
+		String sql = "SELECT * FROM mahasiswa WHERE token = ?";
+		RowMapper<Mahasiswa> rowMapper = new MahasiswaMapper();
+		List<Mahasiswa> mahasiswaList = jdbcTemplate.query(sql, rowMapper, token);
+		return mahasiswaList.isEmpty() ? null : mahasiswaList.get(0);
+	}
+
 	public Mahasiswa findByEmail(String email) {
 		String sql = "SELECT * FROM mahasiswa WHERE email = ?";
 		RowMapper<Mahasiswa> rowMapper = new MahasiswaMapper();
@@ -72,7 +79,8 @@ public class MahasiswaRepository {
 		return jdbcTemplate.update(sql, mahasiswa.getNama(), mahasiswa.getUsername(),
 				mahasiswa.getEmail(), mahasiswa.getPassword(),
 				mahasiswa.getTanggal_lahir(), mahasiswa.getLocation(), mahasiswa.getAbout(), mahasiswa.getKampus(),
-				mahasiswa.getJurusan(), mahasiswa.getSemester(), mahasiswa.getId_mhs());
+				mahasiswa.getJurusan(), mahasiswa.getSemester(), mahasiswa.getToken(), mahasiswa.getProfileUrl(),
+				mahasiswa.getId_mhs());
 	}
 
 	public Mahasiswa findMahasiswaByEmailAndPassword(String email, String password) {

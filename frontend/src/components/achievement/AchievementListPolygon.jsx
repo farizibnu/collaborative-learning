@@ -25,6 +25,10 @@ const AchievementList = ({ searchQuery }) => {
     // other achievements...
   ];
 
+  const countAchievements = achievementsData.filter((achievement) =>
+    achievement.status === 'Complete'
+  );
+
   const filteredAchievements = achievementsData.filter((achievement) =>
     achievement.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -34,22 +38,25 @@ const AchievementList = ({ searchQuery }) => {
   };
 
   return (
-    <div className='grid grid-cols-4 gap-x-6 gap-y-8 text-center'>
-      {filteredAchievements.map(achievement => (
-        <div key={achievement.id} className={`bg-white border-2 border-slate-200 rounded-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${achievement.status === 'Incomplete' ? 'bg-slate-100 border-slate-100 grayscale' : ''}`}
-          onClick={() => toggleDescription(achievement.id)}
-        >
-          <div className='h-20 m-4 flex justify-center rounded-2xl'>
-            <img className='' src={achievement.image} alt={`badge-${achievement.id}`} />
+    <div>
+      <p className='font-bold uppercase mb-6'>{`${countAchievements.length}/${achievementsData.length} Unlocked Achievements`}</p>
+      <div className='grid grid-cols-4 gap-x-6 gap-y-8 text-center'>
+        {filteredAchievements.map(achievement => (
+          <div key={achievement.id} className={`bg-white border-1 border-slate-200 shadow-sm rounded-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 ${achievement.status === 'Incomplete' ? 'bg-slate-200 border-slate-100 grayscale' : ''}`}
+            onClick={() => toggleDescription(achievement.id)}
+          >
+            <div className='h-20 m-4 flex justify-center rounded-2xl'>
+              <img className='' src={achievement.image} alt={`badge-${achievement.id}`} />
+            </div>
+            <div className='mx-4 my-4'>
+              <p className='font-bold text-lg'>{achievement.name}</p>
+              <p className='font-semibold text-slate-400'>{achievement.status}</p>
+              <p className='text-xs hidden'>{achievement.date}</p>
+              <p className={`font-semibold text-sm my-4 ${expandedAchievement === achievement.id ? '' : 'hidden'}`}>{achievement.description}</p>
+            </div>
           </div>
-          <div className='mx-4 my-4'>
-            <p className='font-bold text-lg'>{achievement.name}</p>
-            <p className='font-semibold text-slate-400'>{achievement.status}</p>
-            <p className='text-xs hidden'>{achievement.date}</p>
-            <p className={`font-semibold text-sm my-4 ${expandedAchievement === achievement.id ? '' : 'hidden'}`}>{achievement.description}</p>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
