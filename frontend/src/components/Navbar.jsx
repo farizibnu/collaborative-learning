@@ -62,43 +62,35 @@ const Navbar = () => {
 
   const notifications = [
     {
-      avatar: 'url_to_avatar',
-      username: 'John DoeDoe Doe Doe Doe DOe DOeooo DOeooo',
-      message: 'Liked your post',
-      time: '2 minutes ago',
+      username: 'John Doe',
+      message: 'Sent you a friend request',
+      time: '10:30 AM',
+      type: 'friendRequest',
+      link: '/profile/john_doe'
     },
     {
-      avatar: 'url_to_avatar',
-      username: 'Jane Smith',
-      message: 'Commented on your photo comment comemtne cmomementmcoemm cmoeme cmoem',
-      time: '1 hour ago',
+      username: 'Alice Smith',
+      message: 'Answered your question',
+      time: 'Yesterday',
+      type: 'questionAnswered',
+      link: '/question/123'
     },
     {
-      avatar: 'url_to_avatar',
-      username: 'Jane Smith',
-      message: 'Commented on your photo',
-      time: '1 hour ago aho sahdo aho ahao haoha hoah aho ',
+      username: 'Quiz Results',
+      message: 'Your quiz result is available',
+      time: '2 days ago',
+      type: 'quizResult',
+      link: '/quiz/123/result'
     },
     {
-      avatar: 'url_to_avatar',
-      username: 'John DoeDoe Doe Doe Doe DOe DOeooo DOeooo',
-      message: 'Liked your post',
-      time: '2 minutes ago',
-    },
-    {
-      avatar: 'url_to_avatar',
-      username: 'Jane Smith',
-      message: 'Commented on your photo comment comemtne cmomementmcoemm cmoeme cmoem',
-      time: '1 hour ago',
-    },
-    {
-      avatar: 'url_to_avatar',
-      username: 'Jane Smith',
-      message: 'Commented on your photo',
-      time: '1 hour ago aho sahdo aho ahao haoha hoah aho ',
-    },
-    // Add more notifications as needed
+      username: 'New Message',
+      message: 'You have a new message',
+      time: '3 days ago',
+      type: 'newMessage',
+      link: '/messages'
+    }
   ];
+  
 
   return (
     <div className="flex justify-between items-center p-2 md:ml-6 md:mr-6 relative">
