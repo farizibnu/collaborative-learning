@@ -51,7 +51,9 @@ const LoginPage = ({ onLogin }) => {
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => {
             cookies.set('user_token', codeResponse["access_token"], { path: '/', maxAge: 3600 });
+            console.log('Login Success:', codeResponse);
             setUser(codeResponse);
+            console.log("usernya ", user);
             loginMahasiswa(formData);
             axios.post(`${VITE_BACKEND_CTB_URL}/status`,{user_token : codeResponse["access_token"]})
             .then((res)=>{

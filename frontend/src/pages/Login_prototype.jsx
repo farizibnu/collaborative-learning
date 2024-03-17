@@ -25,7 +25,7 @@ const LoginPage = ({ onLogin }) => {
                 "jurusan": "Computer Science",
                 "semester": 5
             };
-            axios.post("http://localhost:8080/mahasiswa", dummy_user, {
+            axios.post("http://localhost:9090/mahasiswa", dummy_user, {
                 headers: {
                     Accept: "*/*",
                     Authorization: `Bearer ${codeResponse["access_token"]}`,
