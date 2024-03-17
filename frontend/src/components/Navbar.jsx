@@ -9,6 +9,7 @@ import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { SearchOutlined, BellOutlined } from '@ant-design/icons';
 import { Input, Progress, Dropdown, Space } from 'antd';
+import { getDataDashboard } from "../lib/fetchData";
 import {
   KnockFeedProvider,
   NotificationIconButton,
@@ -68,19 +69,26 @@ const Navbar = () => {
   const [profile, setProfile] = useState([]);
   const [mahasiswa, setMahasiswa] = useState("");
   const UserId = Cookies.get('userId');
+  const token = Cookies.get('user_token');
 
-  const getInfoMahasiswa = async () => {
-      try {
-      const response = await axios.get(`http://localhost:8080/mahasiswa/${UserId}`);
-      setMahasiswa(response.data);
-      } catch (error) {
-      console.error('Error fetching mahasiswa data:', error);
-      }
-  };
+  useEffect(() => {
+    const getInfoMahasiswa = async () => {
+        try {
+            let response;
+            if (token === "null") {
+                response = await axios.get(`http://localhost:8080/mahasiswa/${UserId}`);
+            } else {
+                response = await getDataDashboard("/mahasiswa");
+            }
+            setMahasiswa(response.data || response); // Memperhatikan bahwa ada kasus ketika responsenya langsung object, bukan response.data
+            console.log("mahasiswa : ", JSON.stringify(response));
+        } catch (error) {
+            console.error('Error fetching mahasiswa data:', error);
+        }
+    };
 
-  useEffect(()=>{
-      getInfoMahasiswa();
-  }, []);
+    getInfoMahasiswa();
+  }, [token]); // Perubahan token akan memicu useEffect untuk dijalankan kembali
 
   return (
     <div className="flex justify-between items-center p-2 md:ml-6 md:mr-6 relative">

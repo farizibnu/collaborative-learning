@@ -45,7 +45,9 @@ const LoginPage = ({ onLogin }) => {
                 // Jika login berhasil, lanjutkan ke halaman beranda
                 const responseData = await response.json();
                 cookies.set('userId', responseData.userId, { path: '/', maxAge: 3600 });
-                console.log(responseData.userId);
+                cookies.set('user_token', null, { path: '/', maxAge: 3600 });
+                // console.log(responseData.userId);
+                
                 onLogin();
                 navigate('/');
             } else {

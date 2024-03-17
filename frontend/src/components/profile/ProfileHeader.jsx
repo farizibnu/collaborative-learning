@@ -7,22 +7,44 @@ import cover1 from '../../data/cover2.png'
 import avatar from '../../data/avatar.jpg';
 import { getDataDashboard } from "../../lib/fetchData";
 const ProfileHeader = () => {
+    const UserId = Cookies.get('userId');
     const [mahasiswa, setMahasiswa] = useState("");
-    useEffect(()=>{
-        const getInfoMahasiswa = async () => {
-            try {
-                const response = await getDataDashboard("/mahasiswa");
-                if(response){
-                    setMahasiswa(response);
-                }
-                console.log("mahasiswa : ",JSON.stringify(response));
-            } catch (error) {
-            console.error('Error fetching mahasiswa data:', error);
-            }
-        };
-        getInfoMahasiswa();
-    }, []);
+    
 
+    // const getInfoMahasiswa = async () => {
+    //     try {
+    //         const response = await getDataDashboard("/mahasiswa");
+    //         if(response){
+    //             setMahasiswa(response);
+    //         }
+    //         console.log("mahasiswa : ",JSON.stringify(response));
+    //     } catch (error) {
+    //     console.error('Error fetching mahasiswa data:', error);
+    //     }
+    // };
+
+    const token = Cookies.get('user_token');
+
+    useEffect(() => {
+      const getInfoMahasiswa = async () => {
+          try {
+              let response;
+              if (token === "null") {
+                  response = await axios.get(`http://localhost:8080/mahasiswa/${UserId}`);
+              } else {
+                  response = await getDataDashboard("/mahasiswa");
+              }
+              setMahasiswa(response.data || response); // Memperhatikan bahwa ada kasus ketika responsenya langsung object, bukan response.data
+              console.log("mahasiswa : ", JSON.stringify(response));
+          } catch (error) {
+              console.error('Error fetching mahasiswa data:', error);
+          }
+      };
+  
+      getInfoMahasiswa();
+    }, [token]); // Perubahan token akan memicu useEffect untuk dijalankan kembali
+
+    
   return (
     <div>
         <div className='flex justify-center'>
