@@ -14,17 +14,27 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
 public class TokenInterceptor implements HandlerInterceptor {
+    // List of URIs that should be excluded from token validation
+    private final List<String> excludedUris = Arrays.asList("/mahasiswa");
 
     @Override
     public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
             @NonNull Object handler) throws Exception {
+        String requestURI = request.getRequestURI();
+        for (String uri : excludedUris) {
+            if (requestURI.contains(uri)) {
+                return true;
+            }
+        }
         // Check if the "user_token" header is present in the request
         if (request.getHeader("Authorization") == null) {
             return false;
