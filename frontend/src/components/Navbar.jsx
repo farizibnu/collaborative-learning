@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from "react"
 import axios from "axios";
+import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
@@ -64,11 +65,13 @@ const Navbar = () => {
   // const [isVisible, setIsVisible] = useState(false);
   // const notifButtonRef = useRef(null);
 
+  const [profile, setProfile] = useState([]);
   const [mahasiswa, setMahasiswa] = useState("");
+  const UserId = Cookies.get('userId');
 
   const getInfoMahasiswa = async () => {
       try {
-      const response = await axios.get(`http://localhost:8080/mahasiswa/1`);
+      const response = await axios.get(`http://localhost:8080/mahasiswa/${UserId}`);
       setMahasiswa(response.data);
       } catch (error) {
       console.error('Error fetching mahasiswa data:', error);
@@ -81,9 +84,11 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center p-2 md:ml-6 md:mr-6 relative">
-        <div className='ml-8'>
+        <div className='ml-8 gap-4 flex'>
           {/* <p className='font-bold'>Monday</p>
           <p className='text-sm font-semibold'>24 February 2024</p> */}
+          <Link to="/dosen"><button className="p-3 bg-orange-400 text-md font-bold text-white rounded-2xl">To Dosen</button></Link>
+          <Link to="/"><button className="p-3 bg-orange-400 text-md font-bold text-white rounded-2xl">To Mahasiswa</button></Link>
         </div>
       {/* <NavButton title="Menu" icon={<AiOutlineMenu />} /> */}
       <div className="flex rounded-xl h-9">
@@ -129,14 +134,14 @@ const Navbar = () => {
             >
               <img
                 className="rounded-full w-8 h-8"
-                src={avatar}
+                src={mahasiswa.profileUrl ? mahasiswa.profileUrl : avatar}
                 alt="user-profile"
               />
               <div className='w-40'>
                 <p>
                   <span className="text-gray-400 text-14">Hi,</span>{' '}
                   <span className="text-gray-400 font-bold ml-1 text-14">
-                    {mahasiswa.nama}
+                    {mahasiswa.nama ? mahasiswa.nama : mahasiswa.username}
                   </span>
                 </p>
                 <div className='flex w-full'>

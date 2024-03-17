@@ -1,10 +1,37 @@
-import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import { Link, NavLink,useNavigate } from 'react-router-dom';
 import { AiOutlineSlackSquare, AiOutlineLeftSquare } from "react-icons/ai";
-
-import { links } from "../data/dummy";
-
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import { links } from '../data/dummy';
+import Cookies from 'universal-cookie';
+import {getUserInfo} from '../lib/fetchData';
 const Sidebar = () => {
+  const [profile, setProfile] = useState([]);
+  const cookies = new Cookies();
+  const navigation = useNavigate();
+  
+  const logOut = () => {
+    cookies.remove("user_token");
+    cookies.remove("userId");
+    googleLogout();
+    setProfile(null);
+    window.location.href = "/landing";
+  };
+
+  useEffect(
+    () => {
+      const get_user = async ()=> {
+        const user = await getUserInfo();
+        if(user){
+          console.log(user);
+          setProfile(user);
+        }
+      };
+      get_user();
+      
+    },
+    []
+  );
   const activeMenu = true;
   const activeLink =
     "flex items-center gap-5 pl-8 -ml-3 pt-3 pb-2.5 text-orange-400 border-l-4 border-l-orange-400 font-semibold text-md m-2";
@@ -83,6 +110,14 @@ const Sidebar = () => {
                 ))}
               </div>
             ))}
+            <div className=''>
+              <button
+                  onClick={logOut}
+                  className="w-11/12 bg-slate-950 text-orange-400 border-2 border-orange-400 font-bold py-2 px-4 ml-1 rounded-2xl hover:bg-orange-400 hover:text-black"
+                  >
+                  Log Out
+              </button>
+            </div>
           </div>
         </>
       )}
