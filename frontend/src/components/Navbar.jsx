@@ -9,8 +9,16 @@ import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { SearchOutlined, BellOutlined } from '@ant-design/icons';
 import { Input, Progress, Dropdown, Space } from 'antd';
-import NotificationDropdown from "./navbar/NotificationDropdown";
-import { getDataDashboard } from "../lib/fetchData";
+import {
+  KnockFeedProvider,
+  NotificationIconButton,
+  NotificationFeedPopover,
+} from "@knocklabs/react-notification-feed";
+// https://www.npmjs.com/package/@knocklabs/react-notification-feed?activeTab=readme
+
+// Required CSS import, unless you're overriding the styling
+import "@knocklabs/react-notification-feed/dist/index.css";
+
 // import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import avatar from '../data/avatar.jpg';
@@ -34,6 +42,25 @@ import avatar from '../data/avatar.jpg';
 //   {/* </TooltipComponent> */}
 // );
 
+const items = [
+  {
+    label: <p>Notification</p>,
+  },
+
+  {
+    label: <p>Notification</p>,
+    type: 'divider',
+  },
+  {
+    label: <a href="https://www.aliyun.com">2nd menu item 2nd menu itemv 2nd menu item 2nd menu item</a>,
+    key: '1',
+  },
+  {
+    label: '2nd menu item',
+    key: '2',
+  },
+];
+
 const Navbar = () => {
   // const [isVisible, setIsVisible] = useState(false);
   // const notifButtonRef = useRef(null);
@@ -41,15 +68,10 @@ const Navbar = () => {
   const [profile, setProfile] = useState([]);
   const [mahasiswa, setMahasiswa] = useState("");
   const UserId = Cookies.get('userId');
-  const [showDropdown, setShowDropdown] = useState(true);
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
 
   const getInfoMahasiswa = async () => {
       try {
-      const response = await getDataDashboard("mahasiswa");
+      const response = await axios.get(`http://localhost:8080/mahasiswa/${UserId}`);
       setMahasiswa(response.data);
       } catch (error) {
       console.error('Error fetching mahasiswa data:', error);
@@ -59,38 +81,6 @@ const Navbar = () => {
   useEffect(()=>{
       getInfoMahasiswa();
   }, []);
-
-  const notifications = [
-    {
-      username: 'John Doe',
-      message: 'Sent you a friend request',
-      time: '10:30 AM',
-      type: 'friendRequest',
-      link: '/profile/john_doe'
-    },
-    {
-      username: 'Alice Smith',
-      message: 'Answered your question',
-      time: 'Yesterday',
-      type: 'questionAnswered',
-      link: '/question/123'
-    },
-    {
-      username: 'Quiz Results',
-      message: 'Your quiz result is available',
-      time: '2 days ago',
-      type: 'quizResult',
-      link: '/quiz/123/result'
-    },
-    {
-      username: 'New Message',
-      message: 'You have a new message',
-      time: '3 days ago',
-      type: 'newMessage',
-      link: '/messages'
-    }
-  ];
-  
 
   return (
     <div className="flex justify-between items-center p-2 md:ml-6 md:mr-6 relative">
@@ -113,21 +103,13 @@ const Navbar = () => {
         <NavButton title="Notification" dotColor="rgb(254, 201, 15)" icon={<RiNotification3Line />} /> */}
         {/* <TooltipComponent content="Profile" position="BottomCenter"> */}
           <div className='flex gap-2 items-center justify-center'>
-            <div className="relative">
-              <button
-                onClick={toggleDropdown}
-                className="flex items-center text-gray-600 hover:text-gray-800"
-              >
+            <Dropdown className='w-30' menu={{ items }} trigger={['click']} placement="bottomRight">
+              <a onClick={(e) => e.preventDefault()}>
                 <Space>
                   <BellOutlined style={{ fontSize: '22px', color: '#374151' }} />
                 </Space>
-              </button>
-              <NotificationDropdown
-                notifications={notifications}
-                isOpen={showDropdown}
-                toggleDropdown={toggleDropdown}
-              />
-            </div>
+              </a>
+            </Dropdown>
                 {/* <KnockFeedProvider
                   apiKey={process.env.KNOCK_PUBLIC_API_KEY}
                   feedId={process.env.KNOCK_FEED_ID}
