@@ -157,5 +157,4 @@ public class MahasiswaController {
 			return new Result(500, "Fail");
 		}
 	}
-
 }

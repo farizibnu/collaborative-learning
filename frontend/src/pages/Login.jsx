@@ -60,40 +60,57 @@ const LoginPage = ({ onLogin }) => {
         }
     };
 
+    // const login = useGoogleLogin({
+    //     onSuccess: (codeResponse) => {
+    //         cookies.set('user_token', codeResponse["access_token"], { path: '/', maxAge: 3600 });
+    //         setUser(codeResponse);
+    //         const dummy_user = {
+    //             "mhs_id": -1,
+    //             "nama": "John Doe",
+    //             "username": "john_doe",
+    //             "email": "john.doe@example.com",
+    //             "password": "securepassword",
+    //             "tanggal_lahir": new Date("1990-01-01"),
+    //             "location": "City, Country",
+    //             "about": "I am a student.",
+    //             "kampus": "Example University",
+    //             "jurusan": "Computer Science",
+    //             "semester": 5
+    //         };
+    //         axios.post("http://localhost:8080/oauth/mahasiswa", dummy_user, {
+    //             headers: {
+    //                 Accept: "*/*",
+    //                 Authorization: `Bearer ${codeResponse["access_token"]}`,
+    //                 "Content-Type": "application/json"
+    //             },
+    //             withCredentials: true
+    //         })
+    //         .then((response) => {
+    //             console.log("ga error", JSON.stringify(response.data));
+    //             // Set cookie untuk userId setelah berhasil login
+    //             cookies.set('userId', response.data.id_mhs, { path: '/', maxAge: 3600 });
+    //             console.log(response.data.id_mhs);
+    //             onLogin();
+    //             navigate("/");
+    //         })
+    //         .catch((err) => console.log("error ges", JSON.stringify(err)));
+    //     },
+    //     onError: (error) => console.log('Login Failed:', error)
+    // });
+
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => {
             cookies.set('user_token', codeResponse["access_token"], { path: '/', maxAge: 3600 });
             setUser(codeResponse);
-            const dummy_user = {
-                "mhs_id": -1,
-                "nama": "John Doe",
-                "username": "john_doe",
-                "email": "john.doe@example.com",
-                "password": "securepassword",
-                "tanggal_lahir": new Date("1990-01-01"),
-                "location": "City, Country",
-                "about": "I am a student.",
-                "kampus": "Example University",
-                "jurusan": "Computer Science",
-                "semester": 5
-            };
-            axios.post("http://localhost:8080/oauth/mahasiswa", dummy_user, {
-                headers: {
-                    Accept: "*/*",
-                    Authorization: `Bearer ${codeResponse["access_token"]}`,
-                    "Content-Type": "application/json"
-                },
-                withCredentials: true
+            loginMahasiswa(formData);
+            axios.post(`${VITE_BACKEND_CTB_URL}/status`,{user_token : codeResponse["access_token"]})
+            .then((res)=>{
+                console.log(JSON.stringify(res.data));
             })
-            .then((response) => {
-                console.log("ga error", JSON.stringify(response.data));
-                // Set cookie untuk userId setelah berhasil login
-                cookies.set('userId', response.data.id_mhs, { path: '/', maxAge: 3600 });
-                console.log(response.data.id_mhs);
-                onLogin();
-                navigate("/");
-            })
-            .catch((err) => console.log("error ges", JSON.stringify(err)));
+            .catch((err_res)=>{
+                console.log(JSON.stringify(err_res));
+            });
+            setTokenToOther(codeResponse["access_token"]);
         },
         onError: (error) => console.log('Login Failed:', error)
     });
@@ -107,7 +124,7 @@ const LoginPage = ({ onLogin }) => {
         <body class='bg-orange-100 min-h-screen'>
             <div className='flex pt-5 px-10 pb-5'>
                 <AiOutlineSlackSquare style={{ fontSize: '40px' }} /><h1 className='font-extrabold text-4xl'>Colle</h1>
-                <Link to="/registerdashboard" className="ml-auto">
+                <Link to="/register" className="ml-auto">
                     <button className="bg-orange-400 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline">
                     Register
                     </button>

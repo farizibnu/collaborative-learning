@@ -53,7 +53,7 @@ const Register = (onLogin) => {
         <body class='bg-orange-100 min-h-screen'>
             <div className='flex pt-5 px-10 pb-5'>
                 <AiOutlineSlackSquare style={{ fontSize: '40px' }} /><h1 className='font-extrabold text-4xl'>Colle</h1>
-                <Link to="/logindashboard" className="ml-auto">
+                <Link to="/login" className="ml-auto">
                     <button className="bg-orange-400 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline">
                     Login
                     </button>

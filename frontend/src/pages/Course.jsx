@@ -32,6 +32,7 @@ const Course = () => {
       setSuccessMessage(true); // Menampilkan pesan sukses
       setIsModalOpen(false); // Menutup modal setelah berhasil membuat kursus
       clearForm(); // Mengosongkan formulir setelah berhasil membuat kursus
+      window.location.href = "/course";
     } catch (error) {
       console.error("Error:", error);
       if (
@@ -152,6 +153,7 @@ const Course = () => {
               console.log(
                 `Course created successfully. ID: ${id}, Shortname: ${shortname}`
               );
+              
             }
           }
         } else {
