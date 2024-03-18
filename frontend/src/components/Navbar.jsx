@@ -71,7 +71,7 @@ const Navbar = () => {
 
   const getInfoMahasiswa = async () => {
       try {
-      const response = await axios.get(`http://localhost:8080/mahasiswa/${UserId}`);
+      const response = await axios.get(`http://localhost:9090/mahasiswa/${UserId}`);
       setMahasiswa(response.data);
       } catch (error) {
       console.error('Error fetching mahasiswa data:', error);

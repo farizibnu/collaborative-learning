@@ -33,7 +33,7 @@ const LoginPage = ({ onLogin }) => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:8080/mahasiswa/login', {
+            const response = await fetch('http://localhost:9090/mahasiswa/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const LoginPage = ({ onLogin }) => {
                 "jurusan": "Computer Science",
                 "semester": 5
             };
-            axios.post("http://localhost:8080/oauth/mahasiswa", dummy_user, {
+            axios.post("http://localhost:9090/oauth/mahasiswa", dummy_user, {
                 headers: {
                     Accept: "*/*",
                     Authorization: `Bearer ${codeResponse["access_token"]}`,
