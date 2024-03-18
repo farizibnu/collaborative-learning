@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate,useNavigate} from "react-router-dom";
 import { FiSettings } from 'react-icons/fi';
 import { Sidebar, Button, Footer, Header, Navbar, Notification, UserProfile } from './components';
+import Course from "./pages/Course";
+import DetailCourse from "./components/course/detailCourse";
+import MateriCourse from "./components/course/materiCourse";
 import { Profile, ProfileEdit, Home, TanyaJawab, Achievement, CariTeman, Quiz, Login, Register, HomeDosen, Landing} from './pages/';
 import './App.css'
 import {getUserInfo} from './lib/fetchData';
@@ -81,6 +84,9 @@ const App = () => {
                                     <Route path='/tanya-jawab' element={<TanyaJawab />} />
                                     <Route path='/cari-teman' element={<CariTeman />} />
                                     <Route path='/quiz' element={<Quiz />} />
+                                    <Route path="/course" element={<Course />} />
+                                    <Route path="/detail-course/:id" element={<DetailCourse />} />
+                                    <Route path="/materi-course/:id" element={<MateriCourse />} />
                                     {/* Add a default route to redirect to Home if no route matches */}
                                     <Route path='*' element={<Navigate to='/' />} />
                                 </Routes>
